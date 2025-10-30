@@ -34,19 +34,19 @@
             <th colspan="2">EE</th>
             </thead>
             <tr>
-                <td>S.C.C</td>
+                <td>Script creación de base de datos y usuario</td>
                 <td><a href="codigoPHP/ejercicio01.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio01.php"></td>
                 <td></td>
             </tr>
             <tr>
-                <td>S.C.C</td>
+                <td>Script carga inicial de base de datos</td>
                 <td><a href="codigoPHP/ejercicio01.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio01.php"></td>
                 <td></td>
             </tr>
             <tr>
-                <td>S.C.C</td>
+                <td>Script borrado de base de datos y usuario</td>
                 <td><a href="codigoPHP/ejercicio01.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio01.php"></td>
                 <td></td>
