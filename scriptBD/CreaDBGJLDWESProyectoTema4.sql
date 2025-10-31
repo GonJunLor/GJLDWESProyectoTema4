@@ -13,7 +13,8 @@ create table if not exists DBGJLDWESProyectoTema4.T02_Departamento(
     T02_FechaBajaDepartamento datetime null
 )engine=innodb;
 
-create user if not exists 'userGJLDWESProyectoTema4'@'%' identified by 'paso';
+select user from user;
+create user if not exists 'userGJLDWESProyectoTema4'@'%' identified by '5813Libro-Puro';
 
 grant all privileges on *.* to 'userGJLDWESProyectoTema4'@'%' with grant option;
 flush privileges;

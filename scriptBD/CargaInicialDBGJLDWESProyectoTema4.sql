@@ -6,7 +6,7 @@
 
 use DBGJLDWESProyectoTema4;
 
-insert into T02_Departamento (T02_CodDepartamento,T02_DescDepartamento,T02_FechaCreacionDepartamento,T02_VolumenNegocio,T02_FechaBajaDepartamento) values
+insert into T02_Departamento (T02_CodDepartamento,T02_DescDepartamento,T02_FechaCreacionDepartamento,T02_VolumenDeNegocio,T02_FechaBajaDepartamento) values
         ('INF','Departamento de informatica.',now(),1235.5,null),
         ('AUT','Departamento de automocion.',now(),5235.8,null),
         ('ELE','Departamento de electricidad.',now(),2275.1,null),

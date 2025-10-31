@@ -7,4 +7,4 @@
 
 drop database if exists DBGJLDWESProyectoTema4;
 
-drop user if exists DBGJLDWESProyectoTema4;
+drop user if exists 'userGJLDWESProyectoTema4'@'%';
