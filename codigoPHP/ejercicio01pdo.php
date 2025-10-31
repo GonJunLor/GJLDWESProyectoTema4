@@ -14,8 +14,27 @@
         * @since: 01/11/2025
         * 1. Conexión a la base de datos con la cuenta usuario y tratamiento de errores. Utilizar excepciones automáticas siempre que sea posible en todos los ejercicios.
         */
+        // Carga del Archivo de Configuración 
+        try {
+            $aConfig = require '../tmp/configConexion.php';
+        } catch (Exception $e) {
+            echo 'Error Fatal: No se pudo cargar el archivo de configuración. ' . $e->getMessage();
+        }
 
-       ?>
+        $dsn = "mysql:host=".$aConfig['host']."; dbname=".$aConfig['dbname'];
+        $username = $aConfig['username'];
+        $password = $aConfig['password'];
+        try {
+            $miDB = new PDO($dsn,$username,$password);
+            echo 'Conectado a la BBDD con éxito';
+        } catch (PDOException $miExceptionPDO) {
+            echo 'Error: '.$miExceptionPDO->getMessage();
+            echo '<br>';
+            echo 'Código de error: '.$miExceptionPDO->getCode();
+        } finally {
+            unset($miDB);
+        }
+        ?>
     </main>
 </body>
 <head>

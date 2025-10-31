@@ -14,7 +14,7 @@
         * @since: 01/11/2025
         * 2. Mostrar el contenido de la tabla Departamento y el número de registros.
         */
-
+    
        ?>
     </main>
 </body>
