@@ -34,6 +34,7 @@
 
         try {
             $miDB = new mysqli($aConfig['host'],$aConfig['username'],$aConfig['password'],$aConfig['dbname']);
+
             echo 'Conectado a la BBDD con éxito';
 
         } catch (mysqli_sql_exception $miExceptionMySQLi) {
