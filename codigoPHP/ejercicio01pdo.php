@@ -22,6 +22,7 @@
             echo 'Error Fatal: No se pudo cargar el archivo de configuración. ' . $e->getMessage();
         }
 
+        // preparación de los datos de conexión para luego usarlos en el PDO
         $dsn = "mysql:host=".$aConfig['host']."; dbname=".$aConfig['dbname'];
         $username = $aConfig['username'];
         $password = $aConfig['password'];

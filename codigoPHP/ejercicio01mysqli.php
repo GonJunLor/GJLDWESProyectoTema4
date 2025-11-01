@@ -26,6 +26,7 @@
         $controlador->report_mode = MYSQLI_REPORT_ALL;
         /* Con esto hacemos que salte la excepcion automáticamente, ya que sino no saltaría por el catch */
 
+        // Carga del Archivo de Configuración 
         try {
             $aConfig = require '../tmp/configConexion.php';
         } catch (Exception $e) {
