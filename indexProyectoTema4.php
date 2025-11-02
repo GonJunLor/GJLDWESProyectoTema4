@@ -91,8 +91,8 @@
             <tr>
                 <td>4</td>
                 <td>Formulario de búsqueda de departamentos por descripción.</td>
-                <td><a href="codigoPHP/ejercicio04pdo.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio04pdo.php"></a></td>
+                <td><a href="codigoPHP/ejercicio04pdo.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio04pdo.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio04mysqli.php"></a></td>
                 <td><a href="mostrarcodigo/muestraejercicio04mysqli.php"></a></td>
             </tr>
