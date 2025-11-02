@@ -136,7 +136,7 @@
     <link rel="icon" type="image/png" href="../webroot/media/favicon/favicon-32x32.png">
     <link rel="stylesheet" href="../webroot/css/estilos.css">
     <title>Gonzalo Junquera Lorenzo</title>
-        <style>
+    <style>
         main{
             width: 500px;
             height: 300px;
