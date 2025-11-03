@@ -14,19 +14,17 @@
         * @since: 01/11/2025
         * 4. Formulario de búsqueda de departamentos por descripción (por una parte del campo DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos).
         */
-       usar forma de conectar sin archivo externo como ej1
+
         require_once "../core/231018libreriaValidacion.php"; // importamos nuestra libreria
-        // Carga del Archivo de Configuración de la BBDD
-        try {
-            $aConfigBBDD = require_once '../tmp/configConexion.php';
-        } catch (Exception $e) {
-            echo 'Error Fatal: No se pudo cargar el archivo de configuración. '.$e->getMessage();
-        }
 
         // preparación de los datos de conexión para luego usarlos en el PDO
-        $dsn = "mysql:host=".$aConfigBBDD['host']."; dbname=".$aConfigBBDD['dbname'];
-        $username = $aConfigBBDD['username'];
-        $password = $aConfigBBDD['password'];
+        const DSN = "mysql:host=10.199.8.153; dbname=DBGJLDWESProyectoTema4";
+        const USERNAME = 'userGJLDWESProyectoTema4';
+        const PASSWORD = '5813Libro-Puro';
+        // const PASSWORD = 'paso';
+
+        // uso una variable para que la misma línea de codigo me sirva en casa y en clase al usar server_addr
+        $DSN = 'mysql:host='.$_SERVER['SERVER_ADDR'].'; dbname=DBGJLDWESProyectoTema4';
        
         $entradaOK = true; //Variable que nos indica que todo va bien
         $aErrores = [  //Array donde recogemos los mensajes de error
@@ -63,7 +61,7 @@
             $aRespuestas['descripcion'] = $_REQUEST['descripcion'] ?? ''; // Usamos el operador ?? para asegurar un valor si no existe
             
             try {
-                $miDB = new PDO($dsn,$username,$password);
+                $miDB = new PDO($DSN,USERNAME,PASSWORD);
 
                 // Preparamos el término de búsqueda con comodines y en minúsculas para la búsqueda LIKE.
                 // Si la descripción está vacía, el término será '%%', devolviendo todos los resultados.

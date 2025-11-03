@@ -14,24 +14,20 @@
         * @since: 01/11/2025
         * 2. Mostrar el contenido de la tabla Departamento y el número de registros.
         */
-       usar forma de conectar sin archivo externo como ej1
-        // Carga del Archivo de Configuración 
-        try {
-            $aConfig = require '../tmp/configConexion.php';
-        } catch (Exception $e) {
-            echo 'Error Fatal: No se pudo cargar el archivo de configuración. ' . $e->getMessage();
-        }
-
         // preparación de los datos de conexión para luego usarlos en el PDO
-        $dsn = "mysql:host=".$aConfig['host']."; dbname=".$aConfig['dbname'];
-        $username = $aConfig['username'];
-        $password = $aConfig['password'];
+        const DSN = "mysql:host=10.199.8.153; dbname=DBGJLDWESProyectoTema4";
+        const USERNAME = 'userGJLDWESProyectoTema4';
+        const PASSWORD = '5813Libro-Puro';
+        // const PASSWORD = 'paso';
 
-        echo 'Tabla usando consultas preparadas';
+        // uso una variable para que la misma línea de codigo me sirva en casa y en clase al usar server_addr
+        $DSN = 'mysql:host='.$_SERVER['SERVER_ADDR'].'; dbname=DBGJLDWESProyectoTema4';
+
+        echo '<h3>Tabla usando consultas preparadas</h3>';
         // variable para contar el numero de registros recuperados de la BBDD
         $numRegistros = 0;
         try {
-            $miDB = new PDO($dsn,$username,$password);
+            $miDB = new PDO($DSN,USERNAME,PASSWORD);
             
             $consulta = $miDB->prepare("select * from T02_Departamento");
             $consulta->execute();
@@ -68,12 +64,14 @@
             unset($miDB);
         }
 
-        echo 'Tabla usando consultas';
+        echo '<h3>Tabla usando consultas con query</h3>';
         try {
-            $miDB = new PDO($dsn,$username,$password);
+            $miDB = new PDO($DSN,USERNAME,PASSWORD);
             
-            $consulta = $miDB->prepare("select * from T02_Departamento");
-            $consulta->execute();
+            // No se puede usar exec para consultas de select https://www.php.net/manual/es/pdo.exec.php
+            // $numRegistros = $miDB->exec('select * from T02_Departamento');
+            $numRegistros = 0;
+            $consulta = $miDB->query("select * from T02_Departamento");
 
             echo '<table>';
             echo '<tr>';
@@ -96,7 +94,6 @@
                 $numRegistros++;
             }
             echo '</table>';
-
             echo '<h3>Número de registros: '.$numRegistros.'</h3>';
 
         } catch (PDOException $miExceptionPDO) {

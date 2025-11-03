@@ -14,14 +14,17 @@
         * @since: 01/11/2025
         * 3. Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores.
         */
-       usar forma de conectar sin archivo externo como ej1
+       
         require_once "../core/231018libreriaValidacion.php"; // importamos nuestra libreria
-        // Carga del Archivo de Configuración de la BBDD
-        try {
-            $aConfig = require '../tmp/configConexion.php';
-        } catch (Exception $e) {
-            echo 'Error Fatal: No se pudo cargar el archivo de configuración. ' . $e->getMessage();
-        }
+        
+        // preparación de los datos de conexión para luego usarlos en el mysqli
+        const HOSTNAME = "10.199.8.153";
+        const USERNAME = 'userGJLDWESProyectoTema4';
+        // const PASSWORD = 'paso';
+        const PASSWORD = '5813Libro-Puro';
+        const DATABASE = 'DBGJLDWESProyectoTema4';
+        // uso una variable para que la misma línea de codigo me sirva en casa y en clase al usar server_addr
+        $HOSTNAME = $_SERVER['SERVER_ADDR'];
 
         $entradaOK = true; //Variable que nos indica que todo va bien
         $aErrores = [  //Array donde recogemos los mensajes de error
@@ -49,7 +52,7 @@
             if (empty($aErrores['codigo'])) {
                 
                 try {
-                    $miDB = new mysqli($aConfig['host'],$aConfig['username'],$aConfig['password'],$aConfig['dbname']);
+                    $miDB = new mysqli($HOSTNAME,USERNAME,PASSWORD,DATABASE);
                     
                     // devuelve un objeto de la clase mysql_stmt, que sirve para hacer la consulta preparada
                     $consulta = $miDB->stmt_init();
@@ -86,8 +89,8 @@
             $aRespuestas['descripcion'] = "Departamento de ".$_REQUEST['descripcion'];
             
             try {
-                    $miDB = new mysqli($aConfig['host'],$aConfig['username'],$aConfig['password'],$aConfig['dbname']);
-
+                    $miDB = new mysqli($HOSTNAME,USERNAME,PASSWORD,DATABASE);
+                    
                     // devuelve un objeto de la clase mysql_stmt, que sirve para hacer la consulta preparada
                     $consulta = $miDB->stmt_init();
                     $consulta->prepare("insert into T02_Departamento values (?,?,now(),0,null)");

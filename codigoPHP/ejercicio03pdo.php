@@ -14,18 +14,16 @@
         * @since: 01/11/2025
         * 3. Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores.
         */
-       usar forma de conectar sin archivo externo como ej1
-        require_once "../core/231018libreriaValidacion.php"; // importamos nuestra libreria
-        // Carga del Archivo de Configuración de la BBDD
-        try {
-            $aConfigBBDD = require_once '../tmp/configConexion.php';
-        } catch (Exception $e) {
-            echo 'Error Fatal: No se pudo cargar el archivo de configuración. '.$e->getMessage();
-        }
+        include_once "../core/231018libreriaValidacion.php";
+        
         // preparación de los datos de conexión para luego usarlos en el PDO
-        $dsn = "mysql:host=".$aConfigBBDD['host']."; dbname=".$aConfigBBDD['dbname'];
-        $username = $aConfigBBDD['username'];
-        $password = $aConfigBBDD['password'];
+        const DSN = "mysql:host=10.199.8.153; dbname=DBGJLDWESProyectoTema4";
+        const USERNAME = 'userGJLDWESProyectoTema4';
+        const PASSWORD = '5813Libro-Puro';
+        // const PASSWORD = 'paso';
+
+        // uso una variable para que la misma línea de codigo me sirva en casa y en clase al usar server_addr
+        $DSN = 'mysql:host='.$_SERVER['SERVER_ADDR'].'; dbname=DBGJLDWESProyectoTema4';
        
         $entradaOK = true; //Variable que nos indica que todo va bien
         $aErrores = [  //Array donde recogemos los mensajes de error
@@ -53,7 +51,7 @@
             if (empty($aErrores['codigo'])) {
                 
                 try {
-                    $miDB = new PDO($dsn,$username,$password);
+                    $miDB = new PDO($DSN,USERNAME,PASSWORD);
                     
                     $consulta = $miDB->prepare("select * from T02_Departamento where T02_CodDepartamento=?");
                     $consulta->bindParam(1,$_REQUEST['codigo']);
@@ -86,7 +84,7 @@
             $aRespuestas['descripcion'] = "Departamento de ".$_REQUEST['descripcion'];
             
             try {
-                    $miDB = new PDO($dsn,$username,$password);
+                    $miDB = new PDO($DSN,USERNAME,PASSWORD);
 
                     // conexion a la BBDD e insertar un registro
                     $consulta = $miDB->prepare("insert into T02_Departamento values (?,?,now(),0,null)");
