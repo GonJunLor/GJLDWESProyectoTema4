@@ -14,6 +14,7 @@
         * @since: 01/11/2025
         * 4. Formulario de búsqueda de departamentos por descripción (por una parte del campo DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos).
         */
+       usar forma de conectar sin archivo externo como ej1
         require_once "../core/231018libreriaValidacion.php"; // importamos nuestra libreria
         // Carga del Archivo de Configuración de la BBDD
         try {
@@ -103,7 +104,7 @@
             ?>
                 <h2>Buscar departamento</h2>
                 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-                    <label for="descripcion">Introduce Departamento a Buscar </label>
+                    <label for="descripcion">Introduce Departamento a Buscar: </label>
                     <input type="text" name="descripcion" class="obligatorio" value="<?php echo $_REQUEST['descripcion']??'' ?>"><span class="error"><?php echo $aErrores['descripcion'] ?></span>
                     <br>
                     <input type="submit" value="Buscar" name="enviar">

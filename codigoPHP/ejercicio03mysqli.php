@@ -14,6 +14,7 @@
         * @since: 01/11/2025
         * 3. Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores.
         */
+       usar forma de conectar sin archivo externo como ej1
         require_once "../core/231018libreriaValidacion.php"; // importamos nuestra libreria
         // Carga del Archivo de Configuración de la BBDD
         try {

@@ -15,21 +15,60 @@
         * 1. Conexión a la base de datos con la cuenta usuario y tratamiento de errores. Utilizar excepciones automáticas siempre que sea posible en todos los ejercicios.
         */
 
-        // Carga del Archivo de Configuración 
+        // preparación de los datos de conexión para luego usarlos en el PDO
+        const DSN = "mysql:host=10.199.8.153; dbname=DBGJLDWESProyectoTema4";
+        const USERNAME = 'userGJLDWESProyectoTema4';
+        const PASSWORD = 'paso';
+
+        // Atributos de la conexión para usar después al mostrar
+        $aAtributos = array(
+            "AUTOCOMMIT", "ERRMODE", "CASE", "CLIENT_VERSION", "CONNECTION_STATUS",
+            "ORACLE_NULLS", "PERSISTENT", "PREFETCH", "SERVER_INFO", "SERVER_VERSION",
+            "TIMEOUT"
+        );
+
+        // Establecimiento de conexión con valores correctos
+        echo '<h3>Conexión a DBGJLDWESProyectoTema4 correctamente: </h3>';
         try {
-            $aConfig = require '../tmp/configConexion.php';
-        } catch (Exception $e) {
-            echo 'Error Fatal: No se pudo cargar el archivo de configuración. ' . $e->getMessage();
+            $miDB = new PDO(DSN,USERNAME,PASSWORD);
+            echo 'Conectado a la BBDD con éxito';
+            echo '<br><br>';
+
+            echo '<p><b>Atributos de la conexión: </b></p>';
+            foreach ( $aAtributos as $atributo ) {
+                echo "PDO::ATTR_$atributo: ";
+                try {
+                    echo '<span class="rojo">'.$miDB->getAttribute( constant( "PDO::ATTR_$atributo" ) ) . "</span><br>";
+                } catch ( PDOException $miExceptionPDO ) {
+                    echo '<span class="rojo"> <b>Error: </b>'.$miExceptionPDO->getMessage().' <b>con código de error:</b> '.$miExceptionPDO->getCode()."</span><br>";
+                }
+            }
+
+        } catch (PDOException $miExceptionPDO) {
+            echo 'Error: '.$miExceptionPDO->getMessage();
+            echo '<br>';
+            echo 'Código de error: '.$miExceptionPDO->getCode();
+        } finally {
+            unset($miDB);
         }
 
-        // preparación de los datos de conexión para luego usarlos en el PDO
-        $dsn = "mysql:host=".$aConfig['host']."; dbname=".$aConfig['dbname'];
-        $username = $aConfig['username'];
-        $password = $aConfig['password'];
-
+        // Establecimiento de conexión con valores incorrectos
+        echo '<h3>Conexión a DBGJLDWESProyectoTema4 incorrectamente: </h3>';
         try {
-            $miDB = new PDO($dsn,$username,$password);
+            $miDB = new PDO(DSN,USERNAME,'error');
             echo 'Conectado a la BBDD con éxito';
+            echo '<br><br>';
+
+            echo '<p><b>Atributos de la conexión: </b></p>';
+            foreach ( $aAtributos as $atributo ) {
+                echo "PDO::ATTR_$atributo: ";
+                try {
+                    echo '<span class="rojo">'.$miDB->getAttribute( constant( "PDO::ATTR_$atributo" ) ) . "</span><br>";
+                } catch ( PDOException $miExceptionPDO ) {
+                    echo '<span class="rojo"> <b>Error: </b>'.$miExceptionPDO->getMessage().' <b>con código de error:</b> '.$miExceptionPDO->getCode()."</span><br>";
+                }
+            }
+
         } catch (PDOException $miExceptionPDO) {
             echo 'Error: '.$miExceptionPDO->getMessage();
             echo '<br>';
@@ -45,5 +84,17 @@
     <link rel="icon" type="image/png" href="../webroot/media/favicon/favicon-32x32.png">
     <link rel="stylesheet" href="../webroot/css/estilos.css">
     <title>Gonzalo Junquera Lorenzo</title>
+    <style>
+        main{
+            margin: 20px 20px 20px 100px;
+        }
+        h3{
+            text-align: right;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .rojo{color: red;}
+    </style>
+</head>
 </head>
 </html>
