@@ -143,9 +143,12 @@
     <link rel="stylesheet" href="../webroot/css/estilos.css">
     <title>Gonzalo Junquera Lorenzo</title>
     <style>
+        #telefono, #nombre {
+            background-color: lightgoldenrodyellow;
+        }
         main{
-            width: 500px;
-            height: 300px;
+            width:600px;
+            height: 450px;
             margin: auto;
             background-color: #eeeeee;
             border: 2px solid lightgray;
@@ -154,33 +157,63 @@
             padding: 10px;
         }
         main h2{
+            font-family: 'Times New Roman', Times, serif;
             text-align: center;
             margin: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #335d7fff;
         }
+        main p{margin:10px 20px;}
         form *{
             margin-top: 10px; 
         }
         label{
+            font-family: 'Times New Roman', Times, serif;
             display: inline-block;
-            width: 90px;
+            width: 120px;
+            margin-left: 20px;
+            font-size: 1.2rem;
+        }
+        label[for="aceptarRgpd"]{width: 200px;}
+        label[for="fecha_nacimiento"]{width: 170px;}
+        .aviso{
+            font-size: 0.75rem;
             margin-left: 20px;
         }
-        label[for="descripcion"]{width: 220px;}
-        .aviso{font-size: 0.75em;}
-        input, label{margin-bottom: 20px;}
-        input[type="text"]{width: 150px;}
-        .obligatorio {
-            background-color: lightgoldenrodyellow;
+        input{
+            padding: 5px 10px;
+            margin-top: 20px;
+            margin-right: 5px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            font-family: 'Times New Roman', Times, serif;
+            border: 0px solid grey;
         }
-        #codigo{width: 50px;}
+        input[readonly]{
+            background-color: #d3d3d3ff;
+            color: #6e6e6eff;
+        }
+        input[type="date"]{width: 190px;}
+        input[type="checkbox"]{
+            width: 20px;
+            height: 18px;
+        }
         input[name="enviar"], button{
-            padding: 5px 15px;
-            margin: 10px 200px;
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            margin: 20px 120px;
             border-radius: 20px;
-            background-color: rgb(73, 136, 187);
+            background-color: #4988bbff;
             color: white;
+            font-family: 'Times New Roman', Times, serif;
+            border: 0px solid #252525ff;
         }
-        .error{color: red;}
+        .error{
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 </html>
