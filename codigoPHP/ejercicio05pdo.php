@@ -37,17 +37,22 @@
 
 
         // Pruebas de la estrcutura básica de transacción
+        echo "<h2>Transacción correcta</h2>";
+        
         try {
             $miDB = new PDO(DSN,USERNAME,PASSWORD);
-            echo "Conectado a la BBDD";
+            
             $miDB->beginTransaction();
-            echo "en transacción";
+            
             $sql = 'insert into T02_Departamento values ("AAA","aaaaaa",now(),1000,null)';
+            echo $sql.'<br>';
             $miDB->exec($sql);
             $sql = 'insert into T02_Departamento values ("BBB","bbbbbb",now(),1000,null)';
+            echo $sql.'<br>';
             $miDB->exec($sql);
-            $sql = 'insert into T02_Departamento values ("ING","cccccc",now(),1000,null)';
-            // $miDB->exec($sql);
+            $sql = 'insert into T02_Departamento values ("CCC","cccccc",now(),1000,null)';
+            echo $sql.'<br>';
+            $miDB->exec($sql);
 
             $miDB->commit();
             echo "<br>Transacción COMPLETADA y cambios guardados (COMMIT).";
@@ -62,6 +67,65 @@
             unset($miDB);
         }
 
+        echo "<h2>Transacción incorrecta</h2>";
+        echo "<p>Volver a intentar los mismos insert de antes</p>";
+        try {
+            $miDB = new PDO(DSN,USERNAME,PASSWORD);
+            
+            $miDB->beginTransaction();
+            
+            $sql = 'insert into T02_Departamento values ("AAA","aaaaaa",now(),1000,null)';
+            echo $sql.'<br>';
+            $miDB->exec($sql);
+            $sql = 'insert into T02_Departamento values ("BBB","bbbbbb",now(),1000,null)';
+            echo $sql.'<br>';
+            $miDB->exec($sql);
+            $sql = 'insert into T02_Departamento values ("CCC","cccccc",now(),1000,null)';
+            echo $sql.'<br>';
+            $miDB->exec($sql);
+
+            $miDB->commit();
+            echo "<br>Transacción COMPLETADA y cambios guardados (COMMIT).";
+
+        } catch (PDOException $miExceptionPDO) {
+            $miDB->rollBack();
+            echo "<br>Transacción fallida. Cambios deshechos (ROLLBACK).";
+            // temporalmente ponemos estos errores para que se muestren en pantalla
+            $aErrores['T02_CodDepartamento']= 'Error: '.$miExceptionPDO->getMessage().'con código de error: '.$miExceptionPDO->getCode();
+            $entradaOK = false;
+        } finally {
+            unset($miDB);
+        }
+
+        echo "<h2>Reset</h2>";
+        echo "<p>Para poder volver a probar borro los 3 insert </p>";
+        try {
+            $miDB = new PDO(DSN,USERNAME,PASSWORD);
+
+            $miDB->beginTransaction();
+            
+            $sql = 'delete from T02_Departamento where T02_CodDepartamento="AAA"';
+            echo $sql.'<br>';
+            $miDB->exec($sql);
+            $sql = 'delete from T02_Departamento where T02_CodDepartamento="BBB"';
+            echo $sql.'<br>';
+            $miDB->exec($sql);
+            $sql = 'delete from T02_Departamento where T02_CodDepartamento="CCC"';
+            echo $sql.'<br>';
+            $miDB->exec($sql);
+
+            $miDB->commit();
+            echo "<br>Transacción COMPLETADA y campos borrados (COMMIT).";
+
+        } catch (PDOException $miExceptionPDO) {
+            $miDB->rollBack();
+            echo "<br>Transacción fallida. No ha borrado (ROLLBACK).";
+            // temporalmente ponemos estos errores para que se muestren en pantalla
+            $aErrores['T02_CodDepartamento']= 'Error: '.$miExceptionPDO->getMessage().'con código de error: '.$miExceptionPDO->getCode();
+            $entradaOK = false;
+        } finally {
+            unset($miDB);
+        }
        ?>
     </main>
 </body>
