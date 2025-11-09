@@ -67,8 +67,15 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
         if (!preg_match($patron_texto, $cadena) && !empty($cadena)) {
             $mensajeError = " Solo se admiten letras.";
         }
-        $mensajeError .= self::comprobarMaxTamanio($cadena, $maxTamanio);
-        $mensajeError .= self::comprobarMinTamanio($cadena, $minTamanio);
+        // $mensajeError .= self::comprobarMaxTamanio($cadena, $maxTamanio);
+        // $mensajeError .= self::comprobarMinTamanio($cadena, $minTamanio);
+
+        if ($error = self::comprobarMaxTamanio($cadena, $maxTamanio)) {
+            $mensajeError .= $error;
+        }
+        if ($error = self::comprobarMinTamanio($cadena, $minTamanio)) {
+            $mensajeError .= $error;
+        }
         return $mensajeError;
     }
 
@@ -98,8 +105,14 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
         if ($obligatorio == 1 && $cadena != '0') {
             $mensajeError = self::comprobarNoVacio($cadena);
         }
-        $mensajeError .= self::comprobarMaxTamanio($cadena, $maxTamanio);
-        $mensajeError .= self::comprobarMinTamanio($cadena, $minTamanio);
+        // $mensajeError .= self::comprobarMaxTamanio($cadena, $maxTamanio);
+        // $mensajeError .= self::comprobarMinTamanio($cadena, $minTamanio);
+        if ($error = self::comprobarMaxTamanio($cadena, $maxTamanio)) {
+            $mensajeError .= $error;
+        }
+        if ($error = self::comprobarMinTamanio($cadena, $minTamanio)) {
+            $mensajeError .= $error;
+        }
         return $mensajeError;
     }
 
@@ -416,7 +429,9 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
      */
     public static function comprobarMaxTamanio($cadena, $tamanio) {
         $mensajeError = null;
-        if (strlen($cadena) > $tamanio) {
+        
+        // necesario instalar el modulo phpX.X-mbstring en nuestro servidor
+        if (mb_strlen($cadena, 'UTF-8') > $tamanio) {
             $mensajeError = " El tamaño máximo es de " . $tamanio . " caracteres.";
         }
         return $mensajeError;
@@ -440,7 +455,8 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
      */
     public static function comprobarMinTamanio($cadena, $tamanio) {
         $mensajeError = null;
-        if (strlen($cadena) < $tamanio && strlen($cadena) > 0) { //AÑADIDA SEGUNDA COMPROBACIÓN. Para que cuando el campo esté vacío no muestre este mensaje, sólo cuando haya mínimo 1 caracter para advertir del tamaño mínimo
+        // necesario instalar el modulo phpX.X-mbstring en nuestro servidor
+        if (mb_strlen($cadena, 'UTF-8') < $tamanio && strlen($cadena) > 0) { //AÑADIDA SEGUNDA COMPROBACIÓN. Para que cuando el campo esté vacío no muestre este mensaje, sólo cuando haya mínimo 1 caracter para advertir del tamaño mínimo
             $mensajeError = " El tamaño mínimo es de " . $tamanio . " caracteres.";
         }
         return $mensajeError;

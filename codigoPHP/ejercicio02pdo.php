@@ -11,44 +11,55 @@
        <?php
        /**
         * @author: Gonzalo Junquera Lorenzo
-        * @since: 01/11/2025
+        * @since: 09/11/2025
         * 2. Mostrar el contenido de la tabla Departamento y el número de registros.
         */
         // preparación de los datos de conexión para luego usarlos en el PDO
-        const DSN = "mysql:host=10.199.8.153; dbname=DBGJLDWESProyectoTema4";
-        const USERNAME = 'userGJLDWESProyectoTema4';
-        const PASSWORD = '5813Libro-Puro';
-        // const PASSWORD = 'paso';
+        define('DSN', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . '; dbname=DBGJLDWESProyectoTema4');
+        define('USERNAME','userGJLDWESProyectoTema4');
+        define('PASSWORD','5813Libro-Puro');
 
-        // uso una variable para que la misma línea de codigo me sirva en casa y en clase al usar server_addr
-        $DSN = 'mysql:host='.$_SERVER['SERVER_ADDR'].'; dbname=DBGJLDWESProyectoTema4';
-
+        $miDB; // variable para realizar la conexión a la base de datos
+        $sql; // variable para guardar consulta para la base de datos
+        $consulta; // variable para recoger el resultado de la consulta a la base de datos 
+        $registro; // al recorrer la consulta vamos obteniendo registros y los recogemos aquí
+        $oFecha; // para manejar las fechas
+        $miExceptionPDO; // para recoger los errores al manejar la clase PDO
+    
         echo '<h3>Tabla usando consultas preparadas</h3>';
         // variable para contar el numero de registros recuperados de la BBDD
         $numRegistros = 0;
         try {
-            $miDB = new PDO($DSN,USERNAME,PASSWORD);
+            $miDB = new PDO(DSN,USERNAME,PASSWORD);
+            $sql = "select * from T02_Departamento";
             
-            $consulta = $miDB->prepare("select * from T02_Departamento");
+            $consulta = $miDB->prepare($sql);
             $consulta->execute();
 
             echo '<table>';
             echo '<tr>';
-            echo '<th>T02_CodDepartamento</th>';
-            echo '<th>T02_DescDepartamento</th>';
-            echo '<th>T02_FechaCreacionDepartamento</th>';
-            echo '<th>T02_VolumenDeNegocio</th>';
-            echo '<th>T02_FechaBajaDepartamento</th>';
+            echo '<th>Código</th>';
+            echo '<th>Departamento</th>';
+            echo '<th>Fecha de Creacion</th>';
+            echo '<th>Volumen de Negocio</th>';
+            echo '<th>Fecha de Baja</th>';
             echo '</tr>';
 
             while ($registro = $consulta->fetch()) {
                 echo '<tr>';
                 echo '<td>'.$registro['T02_CodDepartamento'].'</td>';
                 echo '<td>'.$registro["T02_DescDepartamento"].'</td>';
-                echo '<td>'.$registro["T02_FechaCreacionDepartamento"].'</td>';
+                // construimos la fecha a partir de la que hay en la bbdd y luego mostramos sólo dia mes y año
+                $oFecha = new DateTime($registro["T02_FechaCreacionDepartamento"]);
+                echo '<td>'.$oFecha->format('d/m/Y').'</td>';
                 // formateamos el float para que se vea en €
                 echo '<td>'.number_format($registro["T02_VolumenDeNegocio"],2,',','.').' €</td>';
-                echo '<td>'.$registro["T02_FechaBajaDepartamento"].'</td>';
+                if (is_null($registro["T02_FechaBajaDepartamento"])) {
+                    echo '<td></td>';
+                } else {
+                    $oFecha = new DateTime($registro["T02_FechaBajaDepartamento"]);
+                    echo '<td>'.$oFecha->format('d/m/Y').'</td>';
+                }
                 echo '</tr>';
                 $numRegistros++;
             }
@@ -66,30 +77,38 @@
 
         echo '<h3>Tabla usando consultas con query</h3>';
         try {
-            $miDB = new PDO($DSN,USERNAME,PASSWORD);
+            $miDB = new PDO(DSN,USERNAME,PASSWORD);
+            $sql = "select * from T02_Departamento";
             
             // No se puede usar exec para consultas de select https://www.php.net/manual/es/pdo.exec.php
             // $numRegistros = $miDB->exec('select * from T02_Departamento');
             $numRegistros = 0;
-            $consulta = $miDB->query("select * from T02_Departamento");
+            $consulta = $miDB->query($sql);
 
             echo '<table>';
             echo '<tr>';
-            echo '<th>T02_CodDepartamento</th>';
-            echo '<th>T02_DescDepartamento</th>';
-            echo '<th>T02_FechaCreacionDepartamento</th>';
-            echo '<th>T02_VolumenDeNegocio</th>';
-            echo '<th>T02_FechaBajaDepartamento</th>';
+            echo '<th>Código</th>';
+            echo '<th>Departamento</th>';
+            echo '<th>Fecha de Creacion</th>';
+            echo '<th>Volumen de Negocio</th>';
+            echo '<th>Fecha de Baja</th>';
             echo '</tr>';
 
             while ($registro = $consulta->fetch()) {
                 echo '<tr>';
                 echo '<td>'.$registro['T02_CodDepartamento'].'</td>';
                 echo '<td>'.$registro["T02_DescDepartamento"].'</td>';
-                echo '<td>'.$registro["T02_FechaCreacionDepartamento"].'</td>';
+                // construimos la fecha a partir de la que hay en la bbdd y luego mostramos sólo dia mes y año
+                $oFecha = new DateTime($registro["T02_FechaCreacionDepartamento"]);
+                echo '<td>'.$oFecha->format('d/m/Y').'</td>';
                 // formateamos el float para que se vea en €
                 echo '<td>'.number_format($registro["T02_VolumenDeNegocio"],2,',','.').' €</td>';
-                echo '<td>'.$registro["T02_FechaBajaDepartamento"].'</td>';
+                if (is_null($registro["T02_FechaBajaDepartamento"])) {
+                    echo '<td></td>';
+                } else {
+                    $oFecha = new DateTime($registro["T02_FechaBajaDepartamento"]);
+                    echo '<td>'.$oFecha->format('d/m/Y').'</td>';
+                }
                 echo '</tr>';
                 $numRegistros++;
             }

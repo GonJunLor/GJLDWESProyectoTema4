@@ -27,7 +27,7 @@
 <body>
     <div id="aviso">CURSO 2025/2026 -- DAW 2 -- I.E.S. LOS SAUCES</div>
     <nav>
-        <div><a href="/">Menu</a></div>
+        <div><a href="../../GJLDWESProyectoDWES/indexProyectoDWES.php">Volver</a></div>
         <h2><a href="../../GJLDWESProyectoDWES/indexProyectoDWES.php">DWES</a> - Tema 4</h2>
         <h2>Gonzalo Junquera Lorenzo</h2>
     </nav>

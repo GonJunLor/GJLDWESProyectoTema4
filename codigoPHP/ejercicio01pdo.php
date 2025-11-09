@@ -11,18 +11,17 @@
        <?php
        /**
         * @author: Gonzalo Junquera Lorenzo
-        * @since: 01/11/2025
+        * @since: 09/11/2025
         * 1. Conexión a la base de datos con la cuenta usuario y tratamiento de errores. Utilizar excepciones automáticas siempre que sea posible en todos los ejercicios.
         */
 
         // preparación de los datos de conexión para luego usarlos en el PDO
-        const DSN = "mysql:host=10.199.8.153; dbname=DBGJLDWESProyectoTema4";
-        const USERNAME = 'userGJLDWESProyectoTema4';
-        const PASSWORD = '5813Libro-Puro';
-        // const PASSWORD = 'paso';
+        define('DSN', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . '; dbname=DBGJLDWESProyectoTema4');
+        define('USERNAME','userGJLDWESProyectoTema4');
+        define('PASSWORD','5813Libro-Puro');
 
-        // uso una variable para que la misma línea de codigo me sirva en casa y en clase al usar server_addr
-        $DSN = 'mysql:host='.$_SERVER['SERVER_ADDR'].'; dbname=DBGJLDWESProyectoTema4';
+        $miDB; // variable para realizar la conexión a la base de datos
+        $miExceptionPDO; // para recoger los errores al manejar la clase PDO
 
         // Atributos de la conexión para usar después al mostrar
         $aAtributos = array(
@@ -34,7 +33,7 @@
         // Establecimiento de conexión con valores correctos
         echo '<h3>Conexión a DBGJLDWESProyectoTema4 correctamente: </h3>';
         try {
-            $miDB = new PDO($DSN,USERNAME,PASSWORD);
+            $miDB = new PDO(DSN,USERNAME,PASSWORD);
             echo 'Conectado a la BBDD con éxito';
             echo '<br><br>';
 
@@ -59,7 +58,7 @@
         // Establecimiento de conexión con valores incorrectos
         echo '<h3>Conexión a DBGJLDWESProyectoTema4 incorrectamente: </h3>';
         try {
-            $miDB = new PDO($DSN,USERNAME,'error');
+            $miDB = new PDO(DSN,USERNAME,'error');
             echo 'Conectado a la BBDD con éxito';
             echo '<br><br>';
 

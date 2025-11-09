@@ -1,0 +1,16 @@
+[
+  {
+    "T02_CodDepartamento": "AAA",
+    "T02_DescDepartamento": "Departamento de aaaaaaaaaa",
+    "T02_FechaCreacionDepartamento": "2025-10-12 10:37:00",
+    "T02_VolumenDeNegocio": 110.68,
+    "T02_FechaBajaDepartamento": null
+  },
+  {
+    "T02_CodDepartamento": "BBB",
+    "T02_DescDepartamento": "Departamento de bbbbbbbbbb",
+    "T02_FechaCreacionDepartamento": "2025-06-21 12:18:51",
+    "T02_VolumenDeNegocio": 220.36,
+    "T02_FechaBajaDepartamento": "2025-10-11 10:37:00"
+  }
+]

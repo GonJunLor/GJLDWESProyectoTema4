@@ -11,19 +11,22 @@
        <?php
        /**
         * @author: Gonzalo Junquera Lorenzo
-        * @since: 01/11/2025
+        * @since: 09/11/2025
         * 3. Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores.
         */
         include_once "../core/231018libreriaValidacion.php";
         
         // preparación de los datos de conexión para luego usarlos en el PDO
-        const DSN = "mysql:host=10.199.8.153; dbname=DBGJLDWESProyectoTema4";
-        const USERNAME = 'userGJLDWESProyectoTema4';
-        const PASSWORD = '5813Libro-Puro';
-        // const PASSWORD = 'paso';
+        define('DSN', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . '; dbname=DBGJLDWESProyectoTema4');
+        define('USERNAME','userGJLDWESProyectoTema4');
+        define('PASSWORD','5813Libro-Puro');
 
-        // uso una variable para que la misma línea de T02_CodDepartamento me sirva en casa y en clase al usar server_addr
-        $DSN = 'mysql:host='.$_SERVER['SERVER_ADDR'].'; dbname=DBGJLDWESProyectoTema4';
+        $miDB; // variable para realizar la conexión a la base de datos
+        $sql; // variable para guardar consulta para la base de datos
+        $consulta; // variable para recoger el resultado de la consulta a la base de datos 
+        $registro; // al recorrer la consulta vamos obteniendo registros y los recogemos aquí
+        $oFechaActual; // para crear un objeto de la clase DateTime y manejar la fecha actual
+        $miExceptionPDO; // para recoger los errores al manejar la clase PDO
        
         $entradaOK = true; //Variable que nos indica que todo va bien
         $aErrores = [  //Array donde recogemos los mensajes de error
@@ -47,8 +50,10 @@
             // Validamos los datos del formulario
             $aErrores['T02_CodDepartamento']= validacionFormularios::comprobarAlfabetico($_REQUEST['T02_CodDepartamento'],3,0,1,);
             $aErrores['T02_DescDepartamento']= validacionFormularios::comprobarAlfabetico($_REQUEST['T02_DescDepartamento'],255,0,1);
-            // (si no puedo desde cliente) modificar el número para cambiar la coma por punto.
-            $aErrores['T02_VolumenDeNegocio']= validacionFormularios::comprobarFloat($_REQUEST['T02_VolumenDeNegocio']);
+
+            // Reemplazar la coma por un punto para estandarizar el formato numérico
+            $volumenNegocioPunto = str_replace(',', '.', $_REQUEST['T02_VolumenDeNegocio']);
+            $aErrores['T02_VolumenDeNegocio']= validacionFormularios::comprobarFloat($volumenNegocioPunto);
             
             foreach($aErrores as $campo => $valor){
                 if(!empty($valor)){ // Comprobar si el valor es válido
@@ -56,21 +61,28 @@
                 } 
             }
 
+            // Validación de la parte de la bbdd, comprobar si existe el código en ella
             if (empty($aErrores['T02_CodDepartamento'])) {
                 
                 try {
-                    $miDB = new PDO($DSN,USERNAME,PASSWORD);
+                    $miDB = new PDO(DSN,USERNAME,PASSWORD);
+                    $sql = <<<sql
+                        select * from T02_Departamento 
+                        where T02_CodDepartamento=?
+                    sql;
                     
-                    $consulta = $miDB->prepare("select * from T02_Departamento where T02_CodDepartamento=?");
+                    $consulta = $miDB->prepare($sql);
                     $consulta->bindParam(1,$_REQUEST['T02_CodDepartamento']);
                     $consulta->execute();
                     
-                    // Comprobamos si existe el T02_CodDepartamento en la BBDD
                     $registro = $consulta->fetch();
-                    if($registro[0]==strtoupper($_REQUEST['T02_CodDepartamento'])){
-                        $aErrores['T02_CodDepartamento']='El código ya existe un la BBDD';
-                        $entradaOK = false;
-                    } // si existe guardamos un error para mostrarlo en el formulario
+                    if ($registro!=false) {// si no devuelve nada que no compruebe el código
+                        // Comprobamos si existe el T02_CodDepartamento en la BBDD
+                        if($registro[0]==$_REQUEST['T02_CodDepartamento']){
+                            $aErrores['T02_CodDepartamento']='El código ya existe un la BBDD';
+                            $entradaOK = false;
+                        } // si existe guardamos un error para mostrarlo en el formulario
+                    }
                     
                 } catch (PDOException $miExceptionPDO) {
                     // temporalmente ponemos estos errores para que se muestren en pantalla
@@ -84,22 +96,28 @@
         } else {//Código que se ejecuta antes de rellenar el formulario
             $entradaOK = false;
         }
+
+
         //Tratamiento del formulario
         if($entradaOK){ //Cargar la variable $aRespuestas y tratamiento de datos OK
             
             // Recuperar los valores del formulario
-            $aRespuestas['T02_CodDepartamento'] = strtoupper($_REQUEST['T02_CodDepartamento']);
+            $aRespuestas['T02_CodDepartamento'] = $_REQUEST['T02_CodDepartamento'];
             $aRespuestas['T02_DescDepartamento'] = "Departamento de ".$_REQUEST['T02_DescDepartamento'];
-            $aRespuestas['T02_CodDepartamento'] = $_REQUEST['T02_VolumenDeNegocio'];
+            $aRespuestas['T02_VolumenDeNegocio'] = str_replace(',', '.', $_REQUEST['T02_VolumenDeNegocio']);
             
             try {
-                    $miDB = new PDO($DSN,USERNAME,PASSWORD);
+                    $miDB = new PDO(DSN,USERNAME,PASSWORD);
+                    $sql = <<<sql
+                        insert into T02_Departamento 
+                        values (?,?,now(),?,null)
+                    sql;
 
                     // conexion a la BBDD e insertar un registro
-                    $consulta = $miDB->prepare("insert into T02_Departamento values (?,?,now(),10,null)");
+                    $consulta = $miDB->prepare($sql);
                     $consulta->bindParam(1,$aRespuestas['T02_CodDepartamento']);
                     $consulta->bindParam(2,$aRespuestas['T02_DescDepartamento']);
-                    // $consulta->bindParam(3,(empty($aRespuestas['T02_VolumenDeNegocio'])?"0":"10"));
+                    $consulta->bindParam(3,$aRespuestas['T02_VolumenDeNegocio']);
                     
                     if($consulta->execute()){
                         echo 'Nuevo departamento creado con éxito';
@@ -128,22 +146,27 @@
                 <h2>Nuevo departamento</h2>
                 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
                     <label for="T02_CodDepartamento">Código:</label>
-                    <input type="text" id="T02_CodDepartamento" class="obligatorio" name="T02_CodDepartamento" value="<?php echo $_REQUEST['T02_CodDepartamento']??'' ?>">
+                    <input 
+                        type="text" id="T02_CodDepartamento" class="obligatorio" name="T02_CodDepartamento" 
+                        value="<?php echo $_REQUEST['T02_CodDepartamento']??'' ?>"
+                        style="text-transform: uppercase;" 
+                        oninput="this.value = this.value.toUpperCase()"
+                    >
                     <span class="error"><?php echo $aErrores['T02_CodDepartamento'] ?></span>
                     <br>
                     <label for="T02_DescDepartamento">Descripción: Departamento de </label>
-                    <input type="text" name="T02_DescDepartamento" class="obligatorio" value="<?php echo $_REQUEST['T02_DescDepartamento']??'' ?>">
+                    <input type="text" id="T02_DescDepartamento" name="T02_DescDepartamento" class="obligatorio" value="<?php echo $_REQUEST['T02_DescDepartamento']??'' ?>">
                     <span class="error"><?php echo $aErrores['T02_DescDepartamento'] ?></span>
                     <br>
                     <label for="T02_FechaCreacionDepartamento">Fecha de alta:</label>
                     <input type="text" id="T02_FechaCreacionDepartamento" name="T02_FechaCreacionDepartamento" value="<?php echo $oFechaActual->format("d/m/Y") ?>" readonly>
                     <br>
                     <label for="T02_VolumenDeNegocio">Volumen de negocio:</label>
-                    <input type="text" id="T02_VolumenDeNegocio" name="T02_VolumenDeNegocio" value="<?php echo $_REQUEST['T02_VolumenDeNegocio']??'' ?>">
+                    <input type="text" id="T02_VolumenDeNegocio" name="T02_VolumenDeNegocio" value="<?php echo $_REQUEST['T02_VolumenDeNegocio']??'' ?>">€
                     <span class="error"><?php echo $aErrores['T02_VolumenDeNegocio'] ?></span>
                     <br>
                     <input type="submit" value="Aceptar" name="enviar">
-                    <input type="submit" value="Cancelar" name="volver">
+                    <a href="../indexProyectoTema4.php" class="cancelar">Cancelar</a>
                 </form>
 
             <?php
@@ -153,9 +176,10 @@
     </main>
     <?php 
         try {
-            $miDB = new PDO($DSN,USERNAME,PASSWORD);
+            $miDB = new PDO(DSN,USERNAME,PASSWORD);
+            $sql = "select * from T02_Departamento";
             
-            $consulta = $miDB->prepare("select * from T02_Departamento");
+            $consulta = $miDB->prepare($sql);
             $consulta->execute();
 
             echo '<table>';
@@ -171,10 +195,17 @@
                 echo '<tr>';
                 echo '<td>'.$registro['T02_CodDepartamento'].'</td>';
                 echo '<td>'.$registro["T02_DescDepartamento"].'</td>';
-                echo '<td>'.$registro["T02_FechaCreacionDepartamento"].'</td>';
+                // construimos la fecha a partir de la que hay en la bbdd y luego mostramos sólo dia mes y año
+                $oFecha = new DateTime($registro["T02_FechaCreacionDepartamento"]);
+                echo '<td>'.$oFecha->format('d/m/Y').'</td>';
                 // formateamos el float para que se vea en €
                 echo '<td>'.number_format($registro["T02_VolumenDeNegocio"],2,',','.').' €</td>';
-                echo '<td>'.$registro["T02_FechaBajaDepartamento"].'</td>';
+                if (is_null($registro["T02_FechaBajaDepartamento"])) {
+                    echo '<td></td>';
+                } else {
+                    $oFecha = new DateTime($registro["T02_FechaBajaDepartamento"]);
+                    echo '<td>'.$oFecha->format('d/m/Y').'</td>';
+                }
                 echo '</tr>';
             }
             echo '</table>';
@@ -199,7 +230,7 @@
         }
         main{
             width:600px;
-            height: 450px;
+            height: 400px;
             margin: auto;
             background-color: #eeeeee;
             border: 2px solid lightgray;
@@ -222,12 +253,14 @@
         label{
             font-family: 'Times New Roman', Times, serif;
             display: inline-block;
-            width: 120px;
+            width: 240px;
             margin-left: 20px;
             font-size: 1.2rem;
+            text-align: right;
         }
-        label[for="aceptarRgpd"]{width: 200px;}
-        label[for="fecha_nacimiento"]{width: 170px;}
+        /* label[for="T02_CodDepartamento"]{width: 70px;}
+        label[for="T02_DescDepartamento"]{width: 240px;}
+        label[for="T02_VolumenDeNegocio"]{width: 170px;} */
         .aviso{
             font-size: 0.75rem;
             margin-left: 20px;
@@ -241,6 +274,10 @@
             font-family: 'Times New Roman', Times, serif;
             border: 0px solid grey;
         }
+        #T02_CodDepartamento{width: 70px;}
+        #T02_DescDepartamento{width: 200px;}
+        #T02_FechaCreacionDepartamento{width: 100px;}
+        #T02_VolumenDeNegocio{width: 100px;}
         input[readonly]{
             background-color: #d3d3d3ff;
             color: #6e6e6eff;
@@ -250,7 +287,7 @@
             width: 20px;
             height: 18px;
         }
-        input[type="submit"], button{
+        input[type="submit"], button, .cancelar{
             padding: 10px 25px;
             font-size: 1.2rem;
             margin: 30px 90px;
@@ -259,6 +296,7 @@
             color: white;
             font-family: 'Times New Roman', Times, serif;
             border: 0px solid #252525ff;
+            text-decoration: none;
         }
         .error{
             font-family: 'Times New Roman', Times, serif;

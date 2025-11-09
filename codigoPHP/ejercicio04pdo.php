@@ -11,36 +11,41 @@
        <?php
        /**
         * @author: Gonzalo Junquera Lorenzo
-        * @since: 01/11/2025
-        * 4. Formulario de búsqueda de departamentos por descripción (por una parte del campo DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos).
+        * @since: 09/11/2025
+        * 4. Formulario de búsqueda de departamentos por descripción (por una parte del campo DescDepartamento, 
+        * si el usuario no pone nada deben aparecer todos los departamentos).
         */
 
         require_once "../core/231018libreriaValidacion.php"; // importamos nuestra libreria
 
         // preparación de los datos de conexión para luego usarlos en el PDO
-        const DSN = "mysql:host=10.199.8.153; dbname=DBGJLDWESProyectoTema4";
-        const USERNAME = 'userGJLDWESProyectoTema4';
-        const PASSWORD = '5813Libro-Puro';
-        // const PASSWORD = 'paso';
+        define('DSN', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . '; dbname=DBGJLDWESProyectoTema4');
+        define('USERNAME','userGJLDWESProyectoTema4');
+        define('PASSWORD','5813Libro-Puro');
 
-        // uso una variable para que la misma línea de codigo me sirva en casa y en clase al usar server_addr
-        $DSN = 'mysql:host='.$_SERVER['SERVER_ADDR'].'; dbname=DBGJLDWESProyectoTema4';
+        $miDB; // variable para realizar la conexión a la base de datos
+        $sql; // variable para guardar consulta para la base de datos
+        $terminoBusqueda = '%%'; // termino de busqueda explicado al usarlo
+        $consulta; // variable para recoger el resultado de la consulta a la base de datos 
+        $aDepartamentos; // devolvemos la consulta en un array y lo guardamos aqui
+        $registro; // al recorrer la consulta vamos obteniendo registros y los recogemos aquí
+        $miExceptionPDO; // para recoger los errores al manejar la clase PDO
        
         $entradaOK = true; //Variable que nos indica que todo va bien
         $aErrores = [  //Array donde recogemos los mensajes de error
-            'descripcion' => ''
+            'T02_DescDepartamento' => ''
         ];
         $aRespuestas=[ //Array donde recogeremos la respuestas correctas (si $entradaOK)
-            'descripcion' => ''
+            'T02_DescDepartamento' => ''
         ]; 
         
         //Para cada campo del formulario: Validar entrada y actuar en consecuencia
         if (isset($_REQUEST["enviar"])) {//Código que se ejecuta cuando se envía el formulario
 
             // Solo queremos validar se introduce algo, sino mostraremos despues todos los registros
-            if (!empty($_REQUEST['descripcion'])) {
+            if (!empty($_REQUEST['T02_DescDepartamento'])) {
                 // Validamos los datos del formulario
-                $aErrores['descripcion']= validacionFormularios::comprobarAlfabetico($_REQUEST['descripcion'],255,0,1);
+                $aErrores['T02_DescDepartamento']= validacionFormularios::comprobarAlfabetico($_REQUEST['T02_DescDepartamento'],255,0,1);
                 
                 foreach($aErrores as $campo => $valor){
                     if(!empty($valor)){ // Comprobar si el valor es válido
@@ -58,61 +63,77 @@
         if($entradaOK){ //Cargar la variable $aRespuestas y tratamiento de datos OK
             
             // Recuperar los valores del formulario
-            $aRespuestas['descripcion'] = $_REQUEST['descripcion'] ?? ''; // Usamos el operador ?? para asegurar un valor si no existe
+            $aRespuestas['T02_DescDepartamento'] = $_REQUEST['T02_DescDepartamento'] ?? ''; // Usamos el operador ?? para asegurar un valor si no existe
+           
+            // Preparamos el término de búsqueda con comodines y en minúsculas para la búsqueda LIKE. 
+            // Los % indica que puede tener cualquier cosa antes y después.
+            // Si la descripción está vacía, el término será '%%', devolviendo todos los resultados.
+            $terminoBusqueda = '%'.strtolower($aRespuestas['T02_DescDepartamento']).'%';
+            // Usamos LOWER() en el campo de la DB y en el término de búsqueda para garantizar que la búsqueda sea insensible a mayúsculas/minúsculas.
             
-            try {
-                $miDB = new PDO($DSN,USERNAME,PASSWORD);
-
-                // Preparamos el término de búsqueda con comodines y en minúsculas para la búsqueda LIKE.
-                // Si la descripción está vacía, el término será '%%', devolviendo todos los resultados.
-                $terminoBusqueda = '%'.strtolower($aRespuestas['descripcion']).'%';
-                
-                // Usamos LOWER() en el campo de la DB y en el término de búsqueda para garantizar que la búsqueda sea insensible a mayúsculas/minúsculas.
-                $consulta = $miDB->prepare('SELECT T02_DescDepartamento FROM T02_Departamento WHERE LOWER(T02_DescDepartamento) LIKE ?');
-                $consulta->bindParam(1, $terminoBusqueda);
-                $consulta->execute();
-                
-                $aDepartamentos = $consulta->fetchAll();
-                
-                echo '<h3>Resultados de la búsqueda: "'.($aRespuestas['descripcion'] ? ($aRespuestas['descripcion']) : 'Todos').'"</h3>';
-                
-                if (count($aDepartamentos) > 0) {
-                    foreach ($aDepartamentos as $departamento) {
-                        echo '<P> --> '.$departamento[0].'</P>';
-                    }
-                } else {
-                    echo '<p>No se encontraron departamentos que coincidan con su búsqueda.</p>';
-                }
-            } catch (PDOException $miExceptionPDO) {
-                // temporalmente ponemos estos errores para que se muestren en pantalla
-                $aErrores['codigo']= 'Error: '.$miExceptionPDO->getMessage().'con código de error: '.$miExceptionPDO->getCode();
-                $entradaOK = false;
-            } finally {
-                unset($miDB);
-            }
-            
-
-            // Botón para volver a recargar el formulario inicial
-            echo '<a href="' . $_SERVER['PHP_SELF'] . '"><button>Volver</button></a>';
-            
-        } else { //Mostrar el formulario hasta que lo rellenemos correctamente
-            //Mostrar formulario
-            //Mostrar los datos tecleados correctamente en intentos anteriores
-            //Mostrar mensajes de error (si los hay y el formulario no se muestra por primera vez)
-            ?>
-                <h2>Buscar departamento</h2>
-                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-                    <label for="descripcion">Introduce Departamento a Buscar: </label>
-                    <input type="text" name="descripcion" class="obligatorio" value="<?php echo $_REQUEST['descripcion']??'' ?>"><span class="error"><?php echo $aErrores['descripcion'] ?></span>
-                    <br>
-                    <input type="submit" value="Buscar" name="enviar">
-                </form>
-
-            <?php
         }
 
        ?>
+        <h2>Buscar departamento</h2>
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+            <label for="T02_DescDepartamento">Introduce Departamento a Buscar: </label>
+            <br>
+            <input type="text" name="T02_DescDepartamento" class="obligatorio" value="<?php echo $_REQUEST['T02_DescDepartamento']??'' ?>">
+            <span class="error"><?php echo $aErrores['T02_DescDepartamento'] ?></span>
+            <br>
+            <input type="submit" value="Buscar" name="enviar">
+            <a href="../indexProyectoTema4.php" class="cancelar">Cancelar</a>
+        </form>
     </main>
+    
+    <?php 
+        try {
+            $miDB = new PDO(DSN,USERNAME,PASSWORD);
+            $sql = <<<sql
+                select * from T02_Departamento
+                where lower(T02_DescDepartamento) like ?
+            sql;
+            
+            $consulta = $miDB->prepare($sql);
+            $consulta->bindParam(1, $terminoBusqueda);
+            $consulta->execute();
+
+            echo '<table>';
+            echo '<tr>';
+            echo '<th>Código</th>';
+            echo '<th>Departamento</th>';
+            echo '<th>Fecha de Creacion</th>';
+            echo '<th>Volumen de Negocio</th>';
+            echo '<th>Fecha de Baja</th>';
+            echo '</tr>';
+
+            while ($registro = $consulta->fetch()) {
+                echo '<tr>';
+                echo '<td>'.$registro['T02_CodDepartamento'].'</td>';
+                echo '<td>'.$registro["T02_DescDepartamento"].'</td>';
+                // construimos la fecha a partir de la que hay en la bbdd y luego mostramos sólo dia mes y año
+                $oFecha = new DateTime($registro["T02_FechaCreacionDepartamento"]);
+                echo '<td>'.$oFecha->format('d/m/Y').'</td>';
+                // formateamos el float para que se vea en €
+                echo '<td>'.number_format($registro["T02_VolumenDeNegocio"],2,',','.').' €</td>';
+                if (is_null($registro["T02_FechaBajaDepartamento"])) {
+                    echo '<td></td>';
+                } else {
+                    $oFecha = new DateTime($registro["T02_FechaBajaDepartamento"]);
+                    echo '<td>'.$oFecha->format('d/m/Y').'</td>';
+                }
+                echo '</tr>';
+            }
+            echo '</table>';
+
+        } catch (PDOException $miExceptionPDO) {
+            echo 'Error: '.$miExceptionPDO->getMessage();
+            echo '<br>';
+            echo 'Código de error: '.$miExceptionPDO->getCode();
+        } finally {
+            unset($miDB);
+        }
+    ?>
 </body>
 <head>
     <meta charset="UTF-8">
@@ -125,7 +146,7 @@
         }
         main{
             width:600px;
-            height: 450px;
+            height: 200px;
             margin: auto;
             background-color: #eeeeee;
             border: 2px solid lightgray;
@@ -148,8 +169,8 @@
         label{
             font-family: 'Times New Roman', Times, serif;
             display: inline-block;
-            width: 120px;
-            margin-left: 20px;
+            width: 100%;
+            text-align: center;
             font-size: 1.2rem;
         }
         label[for="aceptarRgpd"]{width: 200px;}
@@ -161,7 +182,7 @@
         input{
             padding: 5px 10px;
             margin-top: 20px;
-            margin-right: 5px;
+            margin-left: 170px; 
             font-size: 1.2rem;
             border-radius: 5px;
             font-family: 'Times New Roman', Times, serif;
@@ -176,15 +197,16 @@
             width: 20px;
             height: 18px;
         }
-        input[name="enviar"], button{
+        input[name="enviar"], button, .cancelar{
             padding: 10px 25px;
             font-size: 1.2rem;
-            margin: 20px 120px;
+            margin: 20px 90px;
             border-radius: 20px;
             background-color: #4988bbff;
             color: white;
             font-family: 'Times New Roman', Times, serif;
             border: 0px solid #252525ff;
+            text-decoration: none;
         }
         .error{
             font-family: 'Times New Roman', Times, serif;
