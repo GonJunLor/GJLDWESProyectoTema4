@@ -23,29 +23,23 @@
         define('USERNAME','userGJLDWESProyectoTema4');
         define('PASSWORD','5813Libro-Puro');
 
-        $miDB; // variable para realizar la conexión a la base de datos
-        $sql; // variable para guardar consulta para la base de datos
         $terminoBusqueda = '%%'; // termino de busqueda explicado al usarlo
-        $consulta; // variable para recoger el resultado de la consulta a la base de datos 
-        $aDepartamentos; // devolvemos la consulta en un array y lo guardamos aqui
-        $registro; // al recorrer la consulta vamos obteniendo registros y los recogemos aquí
-        $miExceptionPDO; // para recoger los errores al manejar la clase PDO
        
         $entradaOK = true; //Variable que nos indica que todo va bien
         $aErrores = [  //Array donde recogemos los mensajes de error
-            'T02_DescDepartamento' => ''
+            'DescDepartamentoBuscado' => ''
         ];
         $aRespuestas=[ //Array donde recogeremos la respuestas correctas (si $entradaOK)
-            'T02_DescDepartamento' => ''
+            'DescDepartamentoBuscado' => ''
         ]; 
         
         //Para cada campo del formulario: Validar entrada y actuar en consecuencia
         if (isset($_REQUEST["enviar"])) {//Código que se ejecuta cuando se envía el formulario
 
             // Solo queremos validar se introduce algo, sino mostraremos despues todos los registros
-            if (!empty($_REQUEST['T02_DescDepartamento'])) {
+            if (!empty($_REQUEST['DescDepartamentoBuscado'])) {
                 // Validamos los datos del formulario
-                $aErrores['T02_DescDepartamento']= validacionFormularios::comprobarAlfabetico($_REQUEST['T02_DescDepartamento'],255,0,1);
+                $aErrores['DescDepartamentoBuscado']= validacionFormularios::comprobarAlfabetico($_REQUEST['DescDepartamentoBuscado'],255,0,1);
                 
                 foreach($aErrores as $campo => $valor){
                     if(!empty($valor)){ // Comprobar si el valor es válido
@@ -63,12 +57,12 @@
         if($entradaOK){ //Cargar la variable $aRespuestas y tratamiento de datos OK
             
             // Recuperar los valores del formulario
-            $aRespuestas['T02_DescDepartamento'] = $_REQUEST['T02_DescDepartamento'] ?? ''; // Usamos el operador ?? para asegurar un valor si no existe
+            $aRespuestas['DescDepartamentoBuscado'] = $_REQUEST['DescDepartamentoBuscado'] ?? ''; // Usamos el operador ?? para asegurar un valor si no existe
            
             // Preparamos el término de búsqueda con comodines y en minúsculas para la búsqueda LIKE. 
             // Los % indica que puede tener cualquier cosa antes y después.
             // Si la descripción está vacía, el término será '%%', devolviendo todos los resultados.
-            $terminoBusqueda = '%'.strtolower($aRespuestas['T02_DescDepartamento']).'%';
+            $terminoBusqueda = '%'.strtolower($aRespuestas['DescDepartamentoBuscado']).'%';
             // Usamos LOWER() en el campo de la DB y en el término de búsqueda para garantizar que la búsqueda sea insensible a mayúsculas/minúsculas.
             
         }
@@ -76,10 +70,10 @@
        ?>
         <h2>Buscar departamento</h2>
         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-            <label for="T02_DescDepartamento">Introduce Departamento a Buscar: </label>
+            <label for="DescDepartamentoBuscado">Introduce Departamento a Buscar: </label>
             <br>
-            <input type="text" name="T02_DescDepartamento" class="obligatorio" value="<?php echo $_REQUEST['T02_DescDepartamento']??'' ?>">
-            <span class="error"><?php echo $aErrores['T02_DescDepartamento'] ?></span>
+            <input type="text" name="DescDepartamentoBuscado" class="obligatorio" value="<?php echo $_REQUEST['DescDepartamentoBuscado']??'' ?>">
+            <span class="error"><?php echo $aErrores['DescDepartamentoBuscado'] ?></span>
             <br>
             <input type="submit" value="Buscar" name="enviar">
             <a href="../indexProyectoTema4.php" class="cancelar">Cancelar</a>

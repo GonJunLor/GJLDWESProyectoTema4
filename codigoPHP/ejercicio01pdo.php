@@ -20,9 +20,6 @@
         define('USERNAME','userGJLDWESProyectoTema4');
         define('PASSWORD','5813Libro-Puro');
 
-        $miDB; // variable para realizar la conexión a la base de datos
-        $miExceptionPDO; // para recoger los errores al manejar la clase PDO
-
         // Atributos de la conexión para usar después al mostrar
         $aAtributos = array(
             "AUTOCOMMIT", "ERRMODE", "CASE", "CLIENT_VERSION", "CONNECTION_STATUS",

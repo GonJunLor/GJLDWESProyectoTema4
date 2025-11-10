@@ -18,13 +18,6 @@
         define('DSN', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . '; dbname=DBGJLDWESProyectoTema4');
         define('USERNAME','userGJLDWESProyectoTema4');
         define('PASSWORD','5813Libro-Puro');
-
-        $miDB; // variable para realizar la conexión a la base de datos
-        $sql; // variable para guardar consulta para la base de datos
-        $consulta; // variable para recoger el resultado de la consulta a la base de datos 
-        $registro; // al recorrer la consulta vamos obteniendo registros y los recogemos aquí
-        $oFecha; // para manejar las fechas
-        $miExceptionPDO; // para recoger los errores al manejar la clase PDO
     
         echo '<h3>Tabla usando consultas preparadas</h3>';
         // variable para contar el numero de registros recuperados de la BBDD

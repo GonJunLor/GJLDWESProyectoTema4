@@ -20,13 +20,6 @@
         define('DSN', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . '; dbname=DBGJLDWESProyectoTema4');
         define('USERNAME','userGJLDWESProyectoTema4');
         define('PASSWORD','5813Libro-Puro');
-
-        $miDB; // variable para realizar la conexión a la base de datos
-        $sql; // variable para guardar consulta para la base de datos
-        $consulta; // variable para recoger el resultado de la consulta a la base de datos 
-        $registro; // al recorrer la consulta vamos obteniendo registros y los recogemos aquí
-        $oFechaActual; // para crear un objeto de la clase DateTime y manejar la fecha actual
-        $miExceptionPDO; // para recoger los errores al manejar la clase PDO
        
         $entradaOK = true; //Variable que nos indica que todo va bien
         $aErrores = [  //Array donde recogemos los mensajes de error
