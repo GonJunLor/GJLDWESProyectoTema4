@@ -15,10 +15,8 @@
         * 5. Pagina web que añade tres registros a nuestra tabla Departamento utilizando tres instrucciones 
         * insert y una transacción, de tal forma que se añadan los tres registros o no se añada ninguno.
         */
-        // preparación de los datos de conexión para luego usarlos en el PDO
-        define('DSN', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . '; dbname=DBGJLDWESProyectoTema4');
-        define('USERNAME','userGJLDWESProyectoTema4');
-        define('PASSWORD','5813Libro-Puro');
+        // importamos el archivo con los datos de conexión
+        require_once '../conf/confDBPDO.php';
 
         $aRespuestas=[ // Partimos de una array bidimensional con los datos a introducir en la BBDD
             [

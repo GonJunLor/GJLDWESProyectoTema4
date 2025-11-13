@@ -17,7 +17,10 @@
         * Si el alumno dispone de tiempo probar a exportar e importar a o desde un directorio (a elegir) en el equipo cliente. 
         * Si el alumno dispone de tiempo probar importación parcial con log de errores.
         */
+        // importamos el archivo con los datos de conexión
+        require_once '../conf/confDBPDO.php';
 
+        highlight_file("../tmp/datos.json");
        ?>
     </main>
 </body>

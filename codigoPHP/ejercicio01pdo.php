@@ -14,11 +14,8 @@
         * @since: 09/11/2025
         * 1. Conexión a la base de datos con la cuenta usuario y tratamiento de errores. Utilizar excepciones automáticas siempre que sea posible en todos los ejercicios.
         */
-
-        // preparación de los datos de conexión para luego usarlos en el PDO
-        define('DSN', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . '; dbname=DBGJLDWESProyectoTema4');
-        define('USERNAME','userGJLDWESProyectoTema4');
-        define('PASSWORD','5813Libro-Puro');
+        // importamos el archivo con los datos de conexión
+        require_once '../conf/confDBPDO.php';
 
         // Atributos de la conexión para usar después al mostrar
         $aAtributos = array(

@@ -14,10 +14,8 @@
         * @since: 09/11/2025
         * 2. Mostrar el contenido de la tabla Departamento y el número de registros.
         */
-        // preparación de los datos de conexión para luego usarlos en el PDO
-        define('DSN', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . '; dbname=DBGJLDWESProyectoTema4');
-        define('USERNAME','userGJLDWESProyectoTema4');
-        define('PASSWORD','5813Libro-Puro');
+        // importamos el archivo con los datos de conexión
+        require_once '../conf/confDBPDO.php';
     
         echo '<h3>Tabla usando consultas preparadas</h3>';
         // variable para contar el numero de registros recuperados de la BBDD
@@ -31,7 +29,7 @@
 
             echo '<table>';
             echo '<tr>';
-            echo '<th>Código</th>';
+            echo '<th>Código▼</th>';
             echo '<th>Departamento</th>';
             echo '<th>Fecha de Creacion</th>';
             echo '<th>Volumen de Negocio</th>';
@@ -80,7 +78,7 @@
 
             echo '<table>';
             echo '<tr>';
-            echo '<th>Código</th>';
+            echo '<th>Código▼</th>';
             echo '<th>Departamento</th>';
             echo '<th>Fecha de Creacion</th>';
             echo '<th>Volumen de Negocio</th>';

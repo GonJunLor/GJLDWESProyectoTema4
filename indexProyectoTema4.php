@@ -115,16 +115,16 @@
             <tr>
                 <td>7</td>
                 <td>Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla.</td>
-                <td><a href="codigoPHP/ejercicio07pdo.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio07pdo.php"></a></td>
+                <td><a href="codigoPHP/ejercicio07pdo.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio07pdo.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio07mysqli.php"></a></td>
                 <td><a href="mostrarcodigo/muestraejercicio07mysqli.php"></a></td>
             </tr>
             <tr>
                 <td>8</td>
                 <td>Página web que toma datos (código y descripción) de la tabla Departamento.</td>
-                <td><a href="codigoPHP/ejercicio08pdo.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio08pdo.php"></a></td>
+                <td><a href="codigoPHP/ejercicio08pdo.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio08pdo.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio08mysqli.php"></a></td>
                 <td><a href="mostrarcodigo/muestraejercicio08mysqli.php"></a></td>
             </tr>

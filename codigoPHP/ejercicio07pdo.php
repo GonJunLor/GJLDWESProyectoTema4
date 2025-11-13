@@ -14,7 +14,8 @@
         * @since: 01/11/2025
         * 7. Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla Departamento de nuestra base de datos. (IMPORTAR). El fichero importado se encuentra en el directorio .../tmp/ del servidor.
         */
-
+        // importamos el archivo con los datos de conexión
+        require_once '../conf/confDBPDO.php';
        ?>
     </main>
 </body>

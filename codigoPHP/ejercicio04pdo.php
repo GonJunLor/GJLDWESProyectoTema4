@@ -17,11 +17,8 @@
         */
 
         require_once "../core/231018libreriaValidacion.php"; // importamos nuestra libreria
-
-        // preparación de los datos de conexión para luego usarlos en el PDO
-        define('DSN', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . '; dbname=DBGJLDWESProyectoTema4');
-        define('USERNAME','userGJLDWESProyectoTema4');
-        define('PASSWORD','5813Libro-Puro');
+        // importamos el archivo con los datos de conexión
+        require_once '../conf/confDBPDO.php';
 
         $terminoBusqueda = '%%'; // termino de busqueda explicado al usarlo
        
@@ -94,7 +91,7 @@
 
             echo '<table>';
             echo '<tr>';
-            echo '<th>Código</th>';
+            echo '<th>Código▼</th>';
             echo '<th>Departamento</th>';
             echo '<th>Fecha de Creacion</th>';
             echo '<th>Volumen de Negocio</th>';
