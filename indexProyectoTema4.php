@@ -107,8 +107,8 @@
             <tr>
                 <td>6</td>
                 <td>Pagina web que cargue registros en la tabla Departamento. (Array)</td>
-                <td><a href="codigoPHP/ejercicio06pdo.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio06pdo.php"></a></td>
+                <td><a href="codigoPHP/ejercicio06pdo.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio06pdo.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio06mysqli.php"></a></td>
                 <td><a href="mostrarcodigo/muestraejercicio06mysqli.php"></a></td>
             </tr>

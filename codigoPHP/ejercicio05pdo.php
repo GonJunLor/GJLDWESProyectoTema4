@@ -100,16 +100,6 @@
                 $miDB->exec($sql);
             }
 
-            // $sql = 'delete from T02_Departamento where T02_CodDepartamento="AAA"';
-            // echo $sql.'<br>';
-            // $miDB->exec($sql);
-            // $sql = 'delete from T02_Departamento where CodDepartamentoGuardar="BBB"';
-            // echo $sql.'<br>';
-            // $miDB->exec($sql);
-            // $sql = 'delete from T02_Departamento where CodDepartamentoGuardar="CCC"';
-            // echo $sql.'<br>';
-            // $miDB->exec($sql);
-
             $miDB->commit();
             echo "<br>Transacción COMPLETADA y campos borrados (COMMIT).";
 
