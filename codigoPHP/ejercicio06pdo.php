@@ -11,7 +11,7 @@
        <?php
        /**
         * @author: Gonzalo Junquera Lorenzo
-        * @since: 01/11/2025
+        * @since: 13/11/2025
         * 6. Pagina web que cargue registros en la tabla Departamento desde un array departamentosnuevos utilizando una consulta preparada. (Después de programar y entender este ejercicio, modificar los ejercicios anteriores para que utilicen consultas preparadas). Probar consultas preparadas sin bind, pasando los parámetros en un array a execute.
         */
         // importamos el archivo con los datos de conexión
