@@ -133,10 +133,12 @@
             unset($miDB);
         }
 
-        echo '<h2>Datos en el JSON a importar</h2>';
-        echo '<pre>';
-        highlight_file('../tmp/datos.json');
-        echo '</pre>';
+        if (file_exists('../tmp/datos.json')) {
+            echo '<h2>Datos en el JSON a importar</h2>';
+            echo '<pre>';
+            highlight_file('../tmp/datos.json');
+            echo '</pre>';
+        }
        ?>
     </main>
 </body>
