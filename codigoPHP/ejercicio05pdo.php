@@ -47,11 +47,11 @@
             }
 
             $miDB->commit();
-            echo "<br>Transacción COMPLETADA y cambios guardados (COMMIT).";
+            echo '<p class="correcto">Transacción COMPLETADA y cambios guardados (COMMIT).</p>';
 
         } catch (PDOException $miExceptionPDO) {
             $miDB->rollBack();
-            echo "<br>Transacción fallida. Cambios deshechos (ROLLBACK).";
+            echo '<p class="error">Transacción fallida. Cambios deshechos (ROLLBACK).</p>';
             // temporalmente ponemos estos errores para que se muestren en pantalla
             $aErrores['CodDepartamentoGuardar']= 'Error: '.$miExceptionPDO->getMessage().'con código de error: '.$miExceptionPDO->getCode();
             $entradaOK = false;
@@ -73,11 +73,11 @@
             }
 
             $miDB->commit();
-            echo "<br>Transacción COMPLETADA y cambios guardados (COMMIT).";
+            echo '<p class="correcto">Transacción COMPLETADA y cambios guardados (COMMIT).</p>';
 
         } catch (PDOException $miExceptionPDO) {
             $miDB->rollBack();
-            echo "<br>Transacción fallida. Cambios deshechos (ROLLBACK).";
+            echo '<p class="error">Transacción fallida. Cambios deshechos (ROLLBACK).</p>';
             // temporalmente ponemos estos errores para que se muestren en pantalla
             $aErrores['CodDepartamentoGuardar']= 'Error: '.$miExceptionPDO->getMessage().'con código de error: '.$miExceptionPDO->getCode();
             $entradaOK = false;
@@ -99,11 +99,11 @@
             }
 
             $miDB->commit();
-            echo "<br>Transacción COMPLETADA y campos borrados (COMMIT).";
+            echo '<p class="correcto">Transacción COMPLETADA y campos borrados (COMMIT)</p>.';
 
         } catch (PDOException $miExceptionPDO) {
             $miDB->rollBack();
-            echo "<br>Transacción fallida. No ha borrado (ROLLBACK).";
+            echo '<p class="error">Transacción fallida. No ha borrado (ROLLBACK).</p>';
             // temporalmente ponemos estos errores para que se muestren en pantalla
             $aErrores['CodDepartamentoGuardar']= 'Error: '.$miExceptionPDO->getMessage().'con código de error: '.$miExceptionPDO->getCode();
             $entradaOK = false;
@@ -123,13 +123,18 @@
             margin-left: 50px;
         }
         main h2{
-            margin-top: 20px;
-            margin-bottom: 10px;
+            margin: 30px 10vw 0px 10vw;
+            padding: 5px 0;
+            text-align: center;
+            background-color: #ebe5e5ff;
         }
         main p{
-            margin-left: 10px;
-            margin-bottom: 5px;
+            text-align: center;
+            padding: 3px;
+            margin: 0 10vw;
         }
+        .correcto{background-color: #dce9d5ff;}
+        .error{background-color: #e9b8b8ff;}
     </style>
 </head>
 </html>
