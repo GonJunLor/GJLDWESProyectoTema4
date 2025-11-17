@@ -27,8 +27,8 @@
 <body>
     <div id="aviso">CURSO 2025/2026 -- DAW 2 -- I.E.S. LOS SAUCES</div>
     <nav>
-        <div><a href="/">Menu</a></div>
-        <h2>DWES - Tema 4</h2>
+        <div><a href="../../GJLDWESProyectoDWES/indexProyectoDWES.php">Volver</a></div>
+        <h2><a href="../../GJLDWESProyectoDWES/indexProyectoDWES.php">DWES</a> - Tema 4</h2>
         <h2>Gonzalo Junquera Lorenzo</h2>
     </nav>
     <main>
@@ -75,56 +75,56 @@
             <tr>
                 <td>2</td>
                 <td>Mostrar el contenido de la tabla Departamento y el número de registros.</td>
-                <td><a href="codigoPHP/ejercicio02pdo.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio02pdo.php"></a></td>
-                <td><a href="codigoPHP/ejercicio02mysqli.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio02mysqli.php"></a></td>
+                <td><a href="codigoPHP/ejercicio02pdo.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio02pdo.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href="codigoPHP/ejercicio02mysqli.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio02mysqli.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>Formulario para añadir un departamento a la tabla Departamento.</td>
-                <td><a href="codigoPHP/ejercicio03pdo.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio03pdo.php"></a></td>
-                <td><a href="codigoPHP/ejercicio03mysqli.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio03mysqli.php"></a></td>
+                <td><a href="codigoPHP/ejercicio03pdo.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio03pdo.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href="codigoPHP/ejercicio03mysqli.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio03mysqli.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
             </tr>
             <tr>
                 <td>4</td>
-                <td>Formulario de búsqueda de departamentos por descripción .</td>
-                <td><a href="codigoPHP/ejercicio04pdo.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio04pdo.php"></a></td>
+                <td>Formulario de búsqueda de departamentos por descripción.</td>
+                <td><a href="codigoPHP/ejercicio04pdo.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio04pdo.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio04mysqli.php"></a></td>
                 <td><a href="mostrarcodigo/muestraejercicio04mysqli.php"></a></td>
             </tr>
             <tr>
                 <td>5</td>
-                <td>Pagina web que añade tres registros a nuestra tabla Departamento.</td>
-                <td><a href="codigoPHP/ejercicio05pdo.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio05pdo.php"></a></td>
+                <td>Pagina web que añade tres registros a nuestra tabla Departamento. (Transacciones)</td>
+                <td><a href="codigoPHP/ejercicio05pdo.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio05pdo.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio05mysqli.php"></a></td>
                 <td><a href="mostrarcodigo/muestraejercicio05mysqli.php"></a></td>
             </tr>
             <tr>
                 <td>6</td>
-                <td>Pagina web que cargue registros en la tabla Departamento.</td>
-                <td><a href="codigoPHP/ejercicio06pdo.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio06pdo.php"></a></td>
+                <td>Pagina web que cargue registros en la tabla Departamento. (Array)</td>
+                <td><a href="codigoPHP/ejercicio06pdo.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio06pdo.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio06mysqli.php"></a></td>
                 <td><a href="mostrarcodigo/muestraejercicio06mysqli.php"></a></td>
             </tr>
             <tr>
                 <td>7</td>
                 <td>Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla.</td>
-                <td><a href="codigoPHP/ejercicio07pdo.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio07pdo.php"></a></td>
+                <td><a href="codigoPHP/ejercicio07pdo.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio07pdo.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio07mysqli.php"></a></td>
                 <td><a href="mostrarcodigo/muestraejercicio07mysqli.php"></a></td>
             </tr>
             <tr>
                 <td>8</td>
                 <td>Página web que toma datos (código y descripción) de la tabla Departamento.</td>
-                <td><a href="codigoPHP/ejercicio08pdo.php"></a></td>
-                <td><a href="mostrarcodigo/muestraejercicio08pdo.php"></a></td>
+                <td><a href="codigoPHP/ejercicio08pdo.php"><img src="webroot/media/images/play.png" alt="boton_play"></a></td>
+                <td><a href="mostrarcodigo/muestraejercicio08pdo.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="codigoPHP/ejercicio08mysqli.php"></a></td>
                 <td><a href="mostrarcodigo/muestraejercicio08mysqli.php"></a></td>
             </tr>

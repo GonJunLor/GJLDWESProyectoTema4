@@ -11,10 +11,108 @@
        <?php
        /**
         * @author: Gonzalo Junquera Lorenzo
-        * @since: 01/11/2025
+        * @since: 09/11/2025
         * 2. Mostrar el contenido de la tabla Departamento y el número de registros.
         */
+        // importamos el archivo con los datos de conexión
+        require_once '../conf/confDBPDO.php';
+    
+        echo '<h3>Tabla usando consultas preparadas</h3>';
+        // variable para contar el numero de registros recuperados de la BBDD
+        $numRegistros = 0;
+        try {
+            $miDB = new PDO(DSN,USERNAME,PASSWORD);
+            $sql = "select * from T02_Departamento";
+            
+            $consulta = $miDB->prepare($sql);
+            $consulta->execute();
 
+            echo '<table>';
+            echo '<tr>';
+            echo '<th>Código▼</th>';
+            echo '<th>Departamento</th>';
+            echo '<th>Fecha de Creacion</th>';
+            echo '<th>Volumen de Negocio</th>';
+            echo '<th>Fecha de Baja</th>';
+            echo '</tr>';
+
+            while ($registro = $consulta->fetch()) {
+                echo '<tr>';
+                echo '<td>'.$registro['T02_CodDepartamento'].'</td>';
+                echo '<td>'.$registro["T02_DescDepartamento"].'</td>';
+                // construimos la fecha a partir de la que hay en la bbdd y luego mostramos sólo dia mes y año
+                $oFecha = new DateTime($registro["T02_FechaCreacionDepartamento"]);
+                echo '<td>'.$oFecha->format('d/m/Y').'</td>';
+                // formateamos el float para que se vea en €
+                echo '<td>'.number_format($registro["T02_VolumenDeNegocio"],2,',','.').' €</td>';
+                if (is_null($registro["T02_FechaBajaDepartamento"])) {
+                    echo '<td></td>';
+                } else {
+                    $oFecha = new DateTime($registro["T02_FechaBajaDepartamento"]);
+                    echo '<td>'.$oFecha->format('d/m/Y').'</td>';
+                }
+                echo '</tr>';
+                $numRegistros++;
+            }
+            echo '</table>';
+
+            echo '<h3>Número de registros: '.$numRegistros.'</h3>';
+
+        } catch (PDOException $miExceptionPDO) {
+            echo 'Error: '.$miExceptionPDO->getMessage();
+            echo '<br>';
+            echo 'Código de error: '.$miExceptionPDO->getCode();
+        } finally {
+            unset($miDB);
+        }
+
+        echo '<h3>Tabla usando consultas con query</h3>';
+        try {
+            $miDB = new PDO(DSN,USERNAME,PASSWORD);
+            $sql = "select * from T02_Departamento";
+            
+            // No se puede usar exec para consultas de select https://www.php.net/manual/es/pdo.exec.php
+            // $numRegistros = $miDB->exec('select * from T02_Departamento');
+            $numRegistros = 0;
+            $consulta = $miDB->query($sql);
+
+            echo '<table>';
+            echo '<tr>';
+            echo '<th>Código▼</th>';
+            echo '<th>Departamento</th>';
+            echo '<th>Fecha de Creacion</th>';
+            echo '<th>Volumen de Negocio</th>';
+            echo '<th>Fecha de Baja</th>';
+            echo '</tr>';
+
+            while ($registro = $consulta->fetch()) {
+                echo '<tr>';
+                echo '<td>'.$registro['T02_CodDepartamento'].'</td>';
+                echo '<td>'.$registro["T02_DescDepartamento"].'</td>';
+                // construimos la fecha a partir de la que hay en la bbdd y luego mostramos sólo dia mes y año
+                $oFecha = new DateTime($registro["T02_FechaCreacionDepartamento"]);
+                echo '<td>'.$oFecha->format('d/m/Y').'</td>';
+                // formateamos el float para que se vea en €
+                echo '<td>'.number_format($registro["T02_VolumenDeNegocio"],2,',','.').' €</td>';
+                if (is_null($registro["T02_FechaBajaDepartamento"])) {
+                    echo '<td></td>';
+                } else {
+                    $oFecha = new DateTime($registro["T02_FechaBajaDepartamento"]);
+                    echo '<td>'.$oFecha->format('d/m/Y').'</td>';
+                }
+                echo '</tr>';
+                $numRegistros++;
+            }
+            echo '</table>';
+            echo '<h3>Número de registros: '.$numRegistros.'</h3>';
+
+        } catch (PDOException $miExceptionPDO) {
+            echo 'Error: '.$miExceptionPDO->getMessage();
+            echo '<br>';
+            echo 'Código de error: '.$miExceptionPDO->getCode();
+        } finally {
+            unset($miDB);
+        }
        ?>
     </main>
 </body>
