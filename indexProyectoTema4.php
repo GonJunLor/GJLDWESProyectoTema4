@@ -56,6 +56,18 @@
                 <td><a href="codigoPHP/ejercicio01.php"></td>
                 <td></td>
             </tr>
+            <tr>
+                <td>Librería de validación</td>
+                <td><a href="mostrarcodigo/muestrascript3.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href="codigoPHP/ejercicio01.php"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Fichero de configuración</td>
+                <td><a href="mostrarcodigo/muestrascript3.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href="codigoPHP/ejercicio01.php"></td>
+                <td></td>
+            </tr>
         </table>
         <table>
             <thead>
