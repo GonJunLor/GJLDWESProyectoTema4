@@ -15,7 +15,7 @@
     </nav>
     <main>
        <?php 
-        highlight_file("../conf/confDBPDO.php"); 
+        highlight_file("../conf/EDconfDBPDO.php"); 
        ?>
     </main>
 </body>
