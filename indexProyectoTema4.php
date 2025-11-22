@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
     Autor: Gonzalo Junquera Lorenzo
-    Fecha modificación: 31/10/2025
+    Fecha modificación: 21/11/2025
     Descripción: Indice general de la asignatura
 -->
 <html lang="es">
@@ -19,7 +19,7 @@
     <link rel="alternate" href="rss.xml" type="application/rss+xml" title="RSS">
     <title>Gonzalo Junquera Lorenzo</title>
     <style>
-        main>table:first-child{width: 500px;}
+        main>table:first-child{width: 600px;}
         main>table:first-child th[colspan="2"]{width: 80px;}
         td{padding: 7px;}
     </style>
@@ -36,37 +36,49 @@
             <thead>
             <th></th>
             <th>ED</th>
+            <th>Uso</th>
             <th colspan="2">EE</th>
+            <th>Uso</th>
             </thead>
             <tr>
                 <td>Script creación de base de datos y usuario</td>
                 <td><a href="mostrarcodigo/muestrascript1.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href="https://github.com/GonJunLor/GJLDAWProyectoDAW/blob/master/ClienteDesarrollo.md#conectar-a-base-de-datos" target="_blank"><img src="webroot/media/images/ies.png" alt="boton_code"></a></td>
                 <td><a href=""></td>
+                <td><a href="mostrarcodigo/EEmuestrascript1.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href=""></td>
             </tr>
             <tr>
                 <td>Script carga inicial de base de datos</td>
                 <td><a href="mostrarcodigo/muestrascript2.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
-                <td><a href="codigoPHP/ejercicio01.php"></td>
+                <td><a href="https://github.com/GonJunLor/GJLDAWProyectoDAW/blob/master/ClienteDesarrollo.md#conectar-a-base-de-datos" target="_blank"><img src="webroot/media/images/ies.png" alt="boton_code"></a></td>
                 <td></td>
+                <td><a href="mostrarcodigo/EEmuestrascript2.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href=""></td>
             </tr>
             <tr>
                 <td>Script borrado de base de datos y usuario</td>
                 <td><a href="mostrarcodigo/muestrascript3.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
-                <td><a href="codigoPHP/ejercicio01.php"></td>
+                <td><a href="https://github.com/GonJunLor/GJLDAWProyectoDAW/blob/master/ClienteDesarrollo.md#conectar-a-base-de-datos" target="_blank"><img src="webroot/media/images/ies.png" alt="boton_code"></a></td>
                 <td></td>
+                <td><a href="mostrarcodigo/EEmuestrascript3.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href=""></td>
             </tr>
             <tr>
                 <td>Librería de validación</td>
-                <td><a href="mostrarcodigo/muestrascript3.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
-                <td><a href="codigoPHP/ejercicio01.php"></td>
+                <td><a href="mostrarcodigo/muestraLibreria.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td></td>
+                <td></td>
+                <td><a href="mostrarcodigo/muestraLibreria.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href=""></td>
             </tr>
             <tr>
                 <td>Fichero de configuración</td>
-                <td><a href="mostrarcodigo/muestrascript3.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
-                <td><a href="codigoPHP/ejercicio01.php"></td>
+                <td><a href="mostrarcodigo/muestraconf.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td></td>
+                <td></td>
+                <td><a href="mostrarcodigo/EEmuestraconf.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href=""></td>
             </tr>
         </table>
         <table>
@@ -142,7 +154,7 @@
             </tr>
         </table>
     </main>
-    <footer id="pieEDD">
+    <footer id="pie">
         <div>
             <a href="https://github.com/GonJunLor/GJLDWESProyectoTema4.git" target="_blank">
                 <i class="fa-brands fa-github"></i>
@@ -154,7 +166,7 @@
             <a href="/index.html">
             <address style="display: inline;">Gonzalo Junquera Lorenzo</address>
             </a>
-            <time datetime="2025-04-09">09-04-2025</time>
+            <time datetime="2025-11-21">21-11-2025</time>
         </div>
     </footer>
 </body>
