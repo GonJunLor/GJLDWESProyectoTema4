@@ -1,6 +1,6 @@
 nbproject
 .vscode
-conf\confDBPDO.php
+conf/confDBPDO.php
 scriptBD/BorraDBGJLDWESProyectoTema4.sql
 scriptBD/CargaInicialDBGJLDWESProyectoTema4.sql
 scriptBD/CreaDBGJLDWESProyectoTema4.sql
