@@ -1,4 +1,9 @@
-<h1>LISTA DE EJERCICIOS</h1>
+<h1>EJERCICIOS TEMA 4</h1>
+
+<h2>Datos previos</h2>
+Para poder hacer los ejercicios hay que configurar los archivos de la carpeta scriptBD para la creacion de la BBDD y los de la carpeta conf para la conexión a la BBDD desde cada ejercicio, estos archivos son propios de cada entorno de desarrollo, están ignorados de git y no se suben a github. 
+
+<h2>Lista de ejercicios</h2>
 
 1. Conexión a la base de datos con la cuenta usuario y tratamiento de errores. Utilizar excepciones automáticas siempre que sea posible en todos los ejercicios.
 
