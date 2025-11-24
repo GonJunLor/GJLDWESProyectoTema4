@@ -15,7 +15,7 @@
     </nav>
     <main>
        <?php 
-        highlight_file("../codigoPHP/ejercicio08pdo.php")
+        highlight_file("../codigoPHP/ejercicio07pdo.php")
        ?>
     </main>
 </body>
