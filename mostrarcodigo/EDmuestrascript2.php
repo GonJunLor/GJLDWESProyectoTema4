@@ -15,7 +15,7 @@
     </nav>
     <main>
        <?php 
-        highlight_file("../scriptBD/CargaInicialDBGJLDWESProyectoTema4.sql");
+        highlight_file("../scriptBD/EDCargaInicialDBGJLDWESProyectoTema4.sql");
        ?>
     </main>
 </body>

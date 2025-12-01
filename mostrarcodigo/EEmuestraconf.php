@@ -10,12 +10,12 @@
     <div id="aviso">CURSO 2025/2026 -- DAW 2 -- I.E.S. LOS SAUCES</div>
     <nav>
         <div><a href="../indexProyectoTema4.php">Volver</a></div>
-        <h2> <a href="../indexProyectoTema4.php">Tema 4</a> - Ejercicio 08 PDO</h2>
+        <h2> <a href="../indexProyectoTema4.php">Tema 4</a> - Fichero de configuración</h2>
         <h2>Gonzalo Junquera Lorenzo</h2>
     </nav>
     <main>
        <?php 
-        highlight_file("../codigoPHP/ejercicio07pdo.php")
+        highlight_file("../conf/EEconfDBPDO.php"); 
        ?>
     </main>
 </body>

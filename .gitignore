@@ -1,2 +1,5 @@
-nbproject/
+nbproject
 .vscode
+scriptBD/BorraDBGJLDWESProyectoTema4.sql
+scriptBD/CargaInicialDBGJLDWESProyectoTema4.sql
+scriptBD/CreaDBGJLDWESProyectoTema4.sql
