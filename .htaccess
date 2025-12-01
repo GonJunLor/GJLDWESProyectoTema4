@@ -5,3 +5,8 @@ directoryindex indexProyectoTema4.php
 ErrorDocument 404 /error/404.html
 ErrorDocument 403 /error/403.html
 ErrorDocument 500 /error/500.html
+
+# Variables de entorno conexión BBDD en entorno explotación
+SetEnv DB_DSN "mysql:host=localhost; dbname=DBGJLDWESProyectoTema4"
+SetEnv DB_USERNAME "userGJLDWESProyectoTema4"
+SetEnv DB_PASSWORD "5813Libro-Puro"

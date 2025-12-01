@@ -42,27 +42,27 @@
             </thead>
             <tr>
                 <td>Script creación de base de datos y usuario</td>
-                <td><a href="mostrarcodigo/muestrascript1.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href="mostrarcodigo/EDmuestrascript1.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="https://github.com/GonJunLor/GJLDAWProyectoDAW/blob/master/ClienteDesarrollo.md#conectar-a-base-de-datos" target="_blank"><img src="webroot/media/images/ies.png" alt="boton_code"></a></td>
                 <td><a href=""></td>
                 <td><a href="mostrarcodigo/EEmuestrascript1.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
-                <td><a href=""></td>
+                <td><a href="https://github.com/GonJunLor/GJLDAWProyectoDAW/blob/master/EntornoExplotacion.md#bases-de-datos" target="_blank"><img src="webroot/media/images/ies.png" alt="boton_code"></td>
             </tr>
             <tr>
                 <td>Script carga inicial de base de datos</td>
-                <td><a href="mostrarcodigo/muestrascript2.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href="mostrarcodigo/EDmuestrascript2.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="https://github.com/GonJunLor/GJLDAWProyectoDAW/blob/master/ClienteDesarrollo.md#conectar-a-base-de-datos" target="_blank"><img src="webroot/media/images/ies.png" alt="boton_code"></a></td>
                 <td></td>
                 <td><a href="mostrarcodigo/EEmuestrascript2.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
-                <td><a href=""></td>
+                <td><a href="https://github.com/GonJunLor/GJLDAWProyectoDAW/blob/master/EntornoExplotacion.md#bases-de-datos" target="_blank"><img src="webroot/media/images/ies.png" alt="boton_code"></td>
             </tr>
             <tr>
                 <td>Script borrado de base de datos y usuario</td>
-                <td><a href="mostrarcodigo/muestrascript3.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href="mostrarcodigo/EDmuestrascript3.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td><a href="https://github.com/GonJunLor/GJLDAWProyectoDAW/blob/master/ClienteDesarrollo.md#conectar-a-base-de-datos" target="_blank"><img src="webroot/media/images/ies.png" alt="boton_code"></a></td>
                 <td></td>
                 <td><a href="mostrarcodigo/EEmuestrascript3.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
-                <td><a href=""></td>
+                <td><a href="https://github.com/GonJunLor/GJLDAWProyectoDAW/blob/master/EntornoExplotacion.md#bases-de-datos" target="_blank"><img src="webroot/media/images/ies.png" alt="boton_code"></td>
             </tr>
             <tr>
                 <td>Librería de validación</td>
@@ -74,11 +74,11 @@
             </tr>
             <tr>
                 <td>Fichero de configuración</td>
-                <td><a href="mostrarcodigo/muestraconf.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
+                <td><a href="mostrarcodigo/EDmuestraconf.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
                 <td></td>
                 <td></td>
                 <td><a href="mostrarcodigo/EEmuestraconf.php"><img src="webroot/media/images/code.webp" alt="boton_code"></a></td>
-                <td><a href=""></td>
+                <td><a href="https://github.com/GonJunLor/GJLDAWProyectoDAW/blob/master/EntornoExplotacion.md#archivo-de-configuracion-de-conexi%C3%B3n-a-bbdd" target="_blank"><img src="webroot/media/images/ies.png" alt="boton_code"></td>
             </tr>
         </table>
         <table>

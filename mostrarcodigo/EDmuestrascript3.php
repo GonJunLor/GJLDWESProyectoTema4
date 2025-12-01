@@ -10,12 +10,12 @@
     <div id="aviso">CURSO 2025/2026 -- DAW 2 -- I.E.S. LOS SAUCES</div>
     <nav>
         <div><a href="../indexProyectoTema4.php">Volver</a></div>
-        <h2> <a href="../indexProyectoTema4.php">Tema 4</a> - Script carga inicial de base de datos ED</h2>
+        <h2> <a href="../indexProyectoTema4.php">Tema 4</a> - Script borrado de base de datos y usuario ED</h2>
         <h2>Gonzalo Junquera Lorenzo</h2>
     </nav>
     <main>
        <?php 
-        highlight_file("../scriptBD/CargaInicialDBGJLDWESProyectoTema4.sql");
+        highlight_file("../scriptBD/EDBorraDBGJLDWESProyectoTema4.sql");
        ?>
     </main>
 </body>
