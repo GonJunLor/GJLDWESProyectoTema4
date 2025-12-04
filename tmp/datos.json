@@ -1,0 +1,51 @@
+[
+    {
+        "CodDepartamento": "ASD",
+        "DescDepartamento": "Departamento de qwerty",
+        "FechaCreacionDepartamento": "2025-12-04 20:21:43",
+        "VolumenDeNegocio": 0,
+        "FechaBajaDepartamento": "null"
+    },
+    {
+        "CodDepartamento": "AUT",
+        "DescDepartamento": "Departamento de automocion.",
+        "FechaCreacionDepartamento": "2025-11-09 23:21:25",
+        "VolumenDeNegocio": 5235.8,
+        "FechaBajaDepartamento": "null"
+    },
+    {
+        "CodDepartamento": "ELE",
+        "DescDepartamento": "Departamento de electricidad.",
+        "FechaCreacionDepartamento": "2025-11-09 23:21:25",
+        "VolumenDeNegocio": 2275.1,
+        "FechaBajaDepartamento": "null"
+    },
+    {
+        "CodDepartamento": "INF",
+        "DescDepartamento": "Departamento de informatica.",
+        "FechaCreacionDepartamento": "2025-11-09 23:21:25",
+        "VolumenDeNegocio": 1235.5,
+        "FechaBajaDepartamento": "null"
+    },
+    {
+        "CodDepartamento": "ING",
+        "DescDepartamento": "Departamento de ingles.",
+        "FechaCreacionDepartamento": "2025-11-09 23:21:25",
+        "VolumenDeNegocio": 235.9,
+        "FechaBajaDepartamento": "2025-11-09 23:21:25"
+    },
+    {
+        "CodDepartamento": "JKL",
+        "DescDepartamento": "Departamento de asdfdsagdfgdf",
+        "FechaCreacionDepartamento": "2025-12-04 20:28:38",
+        "VolumenDeNegocio": 0,
+        "FechaBajaDepartamento": "null"
+    },
+    {
+        "CodDepartamento": "MAT",
+        "DescDepartamento": "Departamento de matematicas.",
+        "FechaCreacionDepartamento": "2025-11-09 23:21:25",
+        "VolumenDeNegocio": 735.2,
+        "FechaBajaDepartamento": "null"
+    }
+]

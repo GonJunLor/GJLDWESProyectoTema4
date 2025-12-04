@@ -1,5 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../webroot/media/favicon/favicon-32x32.png">
+    <link rel="stylesheet" href="../webroot/css/estilos.css">
+    <title>Gonzalo Junquera Lorenzo</title>
+    <style>
+        main h2{
+            text-align: center;
+            background-color: #ebe5e5ff;
+            margin: 30px 10vw 0px 10vw;
+            padding: 5px 0;
+        }
+        main h3{
+            margin-top: 0;
+        }
+        main p{
+            text-align: center;
+            padding: 3px;
+            margin: 0 10vw;
+        }
+        .correcto{background-color: #dce9d5ff;}
+        .error{background-color: #e9b8b8ff;}
+        main pre{
+            margin-left: 10vw;
+        }
+    </style>
+</head>
 <body>
     <div id="aviso">CURSO 2025/2026 -- DAW 2 -- I.E.S. LOS SAUCES</div>
     <nav>
@@ -142,31 +169,4 @@
        ?>
     </main>
 </body>
-<head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="../webroot/media/favicon/favicon-32x32.png">
-    <link rel="stylesheet" href="../webroot/css/estilos.css">
-    <title>Gonzalo Junquera Lorenzo</title>
-    <style>
-        main h2{
-            text-align: center;
-            background-color: #ebe5e5ff;
-            margin: 30px 10vw 0px 10vw;
-            padding: 5px 0;
-        }
-        main h3{
-            margin-top: 0;
-        }
-        main p{
-            text-align: center;
-            padding: 3px;
-            margin: 0 10vw;
-        }
-        .correcto{background-color: #dce9d5ff;}
-        .error{background-color: #e9b8b8ff;}
-        main pre{
-            margin-left: 10vw;
-        }
-    </style>
-</head>
 </html>
