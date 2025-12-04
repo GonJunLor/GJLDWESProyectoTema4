@@ -1,5 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../webroot/media/favicon/favicon-32x32.png">
+    <link rel="stylesheet" href="../webroot/css/estilos.css">
+    <title>Gonzalo Junquera Lorenzo</title>
+    <style>
+        .obligatorio {
+            background-color: lightgoldenrodyellow;
+        }
+        main{
+            width:600px;
+            height: 400px;
+            margin: auto;
+            background-color: #eeeeee;
+            border: 2px solid lightgray;
+            border-radius: 20px;
+            margin-top: 20px;
+            padding: 10px;
+        }
+        main h2{
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            margin: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #335d7fff;
+        }
+        main p{margin:10px 20px;}
+        form *{
+            margin-top: 10px; 
+        }
+        label{
+            font-family: 'Times New Roman', Times, serif;
+            display: inline-block;
+            width: 240px;
+            margin-left: 20px;
+            font-size: 1.2rem;
+            text-align: right;
+        }
+        /* label[for="T02_CodDepartamento"]{width: 70px;}
+        label[for="T02_DescDepartamento"]{width: 240px;}
+        label[for="T02_VolumenDeNegocio"]{width: 170px;} */
+        .aviso{
+            font-size: 0.75rem;
+            margin-left: 20px;
+        }
+        input{
+            padding: 5px 10px;
+            margin-top: 20px;
+            margin-right: 5px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            font-family: 'Times New Roman', Times, serif;
+            border: 0px solid grey;
+        }
+        #T02_CodDepartamento{width: 70px;}
+        #T02_DescDepartamento{width: 200px;}
+        #T02_FechaCreacionDepartamento{width: 100px;}
+        #T02_VolumenDeNegocio{width: 100px;}
+        input[readonly]{
+            background-color: #d3d3d3ff;
+            color: #6e6e6eff;
+        }
+        input[type="date"]{width: 190px;}
+        input[type="checkbox"]{
+            width: 20px;
+            height: 18px;
+        }
+        input[type="submit"], button, .cancelar{
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            margin: 30px 90px;
+            border-radius: 20px;
+            background-color: #4988bbff;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            border: 0px solid #252525ff;
+            text-decoration: none;
+        }
+        .error{
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
 <body>
     <div id="aviso">CURSO 2025/2026 -- DAW 2 -- I.E.S. LOS SAUCES</div>
     <nav>
@@ -209,90 +295,4 @@
         }
     ?>
 </body>
-<head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="../webroot/media/favicon/favicon-32x32.png">
-    <link rel="stylesheet" href="../webroot/css/estilos.css">
-    <title>Gonzalo Junquera Lorenzo</title>
-    <style>
-        .obligatorio {
-            background-color: lightgoldenrodyellow;
-        }
-        main{
-            width:600px;
-            height: 400px;
-            margin: auto;
-            background-color: #eeeeee;
-            border: 2px solid lightgray;
-            border-radius: 20px;
-            margin-top: 20px;
-            padding: 10px;
-        }
-        main h2{
-            font-family: 'Times New Roman', Times, serif;
-            text-align: center;
-            margin: 10px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #335d7fff;
-        }
-        main p{margin:10px 20px;}
-        form *{
-            margin-top: 10px; 
-        }
-        label{
-            font-family: 'Times New Roman', Times, serif;
-            display: inline-block;
-            width: 240px;
-            margin-left: 20px;
-            font-size: 1.2rem;
-            text-align: right;
-        }
-        /* label[for="T02_CodDepartamento"]{width: 70px;}
-        label[for="T02_DescDepartamento"]{width: 240px;}
-        label[for="T02_VolumenDeNegocio"]{width: 170px;} */
-        .aviso{
-            font-size: 0.75rem;
-            margin-left: 20px;
-        }
-        input{
-            padding: 5px 10px;
-            margin-top: 20px;
-            margin-right: 5px;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            font-family: 'Times New Roman', Times, serif;
-            border: 0px solid grey;
-        }
-        #T02_CodDepartamento{width: 70px;}
-        #T02_DescDepartamento{width: 200px;}
-        #T02_FechaCreacionDepartamento{width: 100px;}
-        #T02_VolumenDeNegocio{width: 100px;}
-        input[readonly]{
-            background-color: #d3d3d3ff;
-            color: #6e6e6eff;
-        }
-        input[type="date"]{width: 190px;}
-        input[type="checkbox"]{
-            width: 20px;
-            height: 18px;
-        }
-        input[type="submit"], button, .cancelar{
-            padding: 10px 25px;
-            font-size: 1.2rem;
-            margin: 30px 90px;
-            border-radius: 20px;
-            background-color: #4988bbff;
-            color: white;
-            font-family: 'Times New Roman', Times, serif;
-            border: 0px solid #252525ff;
-            text-decoration: none;
-        }
-        .error{
-            font-family: 'Times New Roman', Times, serif;
-            color: red;
-            font-size: 0.9rem;
-        }
-    </style>
-</head>
 </html>

@@ -33,13 +33,11 @@
         */
 
         // preparación de los datos de conexión para luego usarlos en el mysqli
-        const HOSTNAME = "10.199.8.153";
+        const HOSTNAME = "localhost";
         const USERNAME = 'userGJLDWESProyectoTema4';
         // const PASSWORD = 'paso';
         const PASSWORD = '5813Libro-Puro';
         const DATABASE = 'DBGJLDWESProyectoTema4';
-        // uso una variable para que la misma línea de codigo me sirva en casa y en clase al usar server_addr
-        $HOSTNAME = $_SERVER['SERVER_ADDR'];
 
         // Aqui están las propiedades https://www.php.net/manual/es/class.mysqli.php
         $aPropiedadesMySQLi = [
@@ -79,7 +77,7 @@
         echo '<h3>Conexión a '.DATABASE.' correctamente: </h3>';
 
         try {
-            $miDB = new mysqli($HOSTNAME,USERNAME,PASSWORD,DATABASE);
+            $miDB = new mysqli(HOSTNAME,USERNAME,PASSWORD,DATABASE);
 
             echo 'Conectado a la BBDD con éxito';
             echo '<br><br>';
@@ -111,7 +109,7 @@
         echo '<h3>Conexión a '.DATABASE.' correctamente: </h3>';
 
         try {
-            $miDB = new mysqli($HOSTNAME,USERNAME,"error",DATABASE);
+            $miDB = new mysqli(HOSTNAME,USERNAME,"error",DATABASE);
 
             echo 'Conectado a la BBDD con éxito';
             echo '<br><br>';
